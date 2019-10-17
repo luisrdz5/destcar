@@ -38,12 +38,12 @@ Destcar es una aplicación de movilidad que ayuda a sus usuarios a contactar con
 
 
 ## Desarrolladores
-*David Flores Mauricio
-*Luis Antonio Rodríguez García 
+* David Flores Mauricio
+* Luis Antonio Rodríguez García 
 
 ### Contribuir
 Si alguien quiere agregar o mejorar algo, lo invito a colaborar directamente en este repositorio: 
 [destcar](https://github.com/luisrdz5/destcar/)
 
 ### Licencia
-escuelajs-reto-06 se lanza bajo la licencia [MIT](https://opensource.org/licenses/MIT).
+destCar se lanza bajo la licencia [MIT](https://opensource.org/licenses/MIT).
