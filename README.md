@@ -6,13 +6,13 @@ Destcar es una aplicación de movilidad que ayuda a sus usuarios a contactar con
 ![destCar](https://raw.githubusercontent.com/luisrdz5/destcar/master/images/project.jpg)
 
 ## Alcance del proyecto
--Pantallas implementadas
--Pantalla de Sign in/ Sign up / Login / Logout Puede ser con redes sociales
--Pantalla de mapa para seleccion de origen y destino
--Presentación del costo del viaje, conocer tiempo de espera y llegada
--Agregar lista de lugares frecuentes
--Pantalla de perfil del usuario
--Pantalla de perfil del conductor
+- Pantallas implementadas
+- Pantalla de Sign in/ Sign up / Login / Logout Puede ser con redes sociales
+- Pantalla de mapa para seleccion de origen y destino
+- Presentación del costo del viaje, conocer tiempo de espera y llegada
+- Agregar lista de lugares frecuentes
+- Pantalla de perfil del usuario
+- Pantalla de perfil del conductor
 
 ## Flujo
 1. Un usuario ingresa a la aplicación y se registra con sus datos personales, no es necesario agregar tarjeta para el pago pero debe estar la opción.
