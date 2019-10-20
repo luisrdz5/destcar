@@ -1,47 +1,55 @@
-# DestCar
-DestCar Proyecto para la escuela de javascript
+# Libro de identidad
 
-Destcar es una aplicación de movilidad que ayuda a sus usuarios a contactar conductores dispuestos a desplazarlos por la ciudad.
+![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)
+
+A continuación, se presentan las caracteristicas visuales de la app.
+
+# Paleta de colores
+  1. Tonos de verde:
+     * #99E265
+     * #A3F06C
+     * #6FA349
+2. Tonos de azul:
+   * #82D9FF
+   * #05C4E6
+   * #416D80
+3. Fuente
+   * Fredoka One
+
+# Logo
+![Logo Destcar vertical](/images/logo/logo-vertical.png) 
+![Logo Destcar horizontal](/images/logo/logo-horizontal.png) 
+
+> Se usó canva para diseñar el Logo
+
+# Imagenes de la aplicación
+![Inicio](/images/app/Inicio.png) 
+![Ingresar](/images/app/Ingresar.png) 
+![Registro](/images/app/Registro.png) 
+![Home](/images/app/Home.png) 
+![Side-menu](/images/app/Side-menu.png) 
+![Perfil](/images/app/Perfil.png) 
+![Lugares](/images/app/Lugares.png)  
+![Resultados-de-busqueda](/images/app/Resultados-de-busqueda.png) 
+![Detalles-de-lugar](/images/app/Detalles-de-lugar.png) 
+![Lugar-encontrado](/images/app/Lugar-encontrado.png)  
+![Iniciar-viaje](/images/app/Iniciar-viaje.png) 
+![Llamar-taxi](/images/app/Llamar-taxi.png) 
+![Esperando-taxi](/images/app/Esperando-taxi.png) 
+![Cancelar-viaje](/images/app/Cancelar-viaje.png) 
+![En-camino](/images/app/En-camino.png) 
+![Finalizar-viaje](/images/app/Finalizar-viaje.png) 
+![Opciones-especiales](/images/app/Opciones-especiales.png)
+
+* [Diseño de app](/frontend/destcar.xd) - Archivo de Adobe XD
 
 
-![destCar](/images/project.jpg)
-
-
-## Alcance del proyecto
-### Pantallas implementadas
-- Pantalla de Sign in/ Sign up / Login / Logout Puede ser con redes sociales
-- Pantalla de mapa para seleccion de origen y destino
-- Presentación del costo del viaje, conocer tiempo de espera y llegada
-- Agregar lista de lugares frecuentes
-- Pantalla de perfil del usuario
-- Pantalla de perfil del conductor
-
-### Flujo
-1. Un usuario ingresa a la aplicación y se registra con sus datos personales, no es necesario agregar tarjeta para el pago pero debe estar la opción.
-2. El usuario ve en el mapa su ubicación actual.
-3. A través de un buscador el usuario debe poder seleccionar su destino.
-4. A través de un buscador el usuario debe poder seleccionar su origen.
-5. La aplicación debe mostrar al usuario el valor aproximado del servicio.
-6. La aplicación debe mostrar al usuario el tiempo aproximado que le tomará llegar a su destino.
-7. El usuario aprueba la solicitud.
-8. La aplicación le indica al usuario la información del chofer y le permitirá ingresar al perfil del chofer para  ver sus calificaciones.
-9. Mientras espera el usuario debe ver la ubicación real del conductor.
-10. Al finalizar el servicio se genera una factura con la información del servicio y el costo.
-
-
-## Arquitectura de la Aplicación 
-
-## Instalación
-
-## Ejecución
-
-## Compilar
 
 
 
 ## Desarrolladores
-* David Flores Mauricio
-* Luis Antonio Rodríguez García 
+* [David Flores Mauricio](https://github.com/solid94)
+* [Luis Antonio Rodríguez García](https://github.com/luisrdz5)
 
 ### Contribuir
 Si alguien quiere agregar o mejorar algo, lo invito a colaborar directamente en este repositorio: 
