@@ -38,8 +38,8 @@ Destcar es una aplicación de movilidad que ayuda a sus usuarios a contactar con
 
 
 ## Desarrolladores
-* David Flores Mauricio
-* Luis Antonio Rodríguez García 
+* [David Flores Mauricio](https://github.com/solid94)
+* [Luis Antonio Rodríguez García](https://github.com/luisrdz5) 
 
 ### Contribuir
 Si alguien quiere agregar o mejorar algo, lo invito a colaborar directamente en este repositorio: 
