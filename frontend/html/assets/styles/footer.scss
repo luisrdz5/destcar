@@ -1,0 +1,26 @@
+@import "variables.scss";
+
+.footer{
+    background-color: $background-color;
+    display:flex;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+.footer a{
+    color: $blue3;
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 30px;
+    text-decoration: none;
+}
+.footer a:hover{
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px){
+    .footer{
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
