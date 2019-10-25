@@ -96,12 +96,12 @@ VARIABLES
 }
 
 .header__burguer__menu--profile--photo {
-  margin-top: 10px;
+  margin-top: -150px;
 }
 
 .header__burguer__menu--profile--photo img {
   margin-right: 8px;
-  width: 100px;
+  width: 120px;
 }
 
 @media only screen and (min-width: 829px) {
