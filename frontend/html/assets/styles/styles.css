@@ -97,11 +97,54 @@ VARIABLES
 
 .header__burguer__menu--profile--photo {
   margin-top: -150px;
+  display: flex;
+  flex-direction: column;
 }
 
-.header__burguer__menu--profile--photo img {
+.header__burguer__menu--profile--container {
   margin-right: 8px;
-  width: 120px;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  background: #cdcdcd;
+}
+
+.header__burguer__menu--profile--photo--img {
+  width: 60px;
+  border-radius: 15px;
+}
+
+.header__burguer__menu--profile--photo--rating {
+  position: relative;
+  top: -22px;
+  right: -31px;
+  font-size: 11px;
+  color: white;
+  background: #416D80;
+  border-radius: 25%;
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+.header__burguer__menu--profile--photo--star {
+  position: relative;
+  width: 14px;
+  top: -15px;
+  right: -13px;
+}
+
+.header__burguer__menu--profile--photo--id {
+  color: #232323;
+  margin-top: 10px;
+}
+
+.header__burguer__menu--profile--photo--name {
+  color: white;
+  font-size: 1.3em;
+  margin-top: 30px;
 }
 
 @media only screen and (min-width: 829px) {
@@ -164,8 +207,8 @@ VARIABLES
     margin: -70px 0 0 -50px;
     padding: 50px;
     padding-top: 225px;
-    background: #000;
-    opacity: 0.3;
+    background: #416D80;
+    opacity: 0.95;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
     transform-origin: 0% 0%;
