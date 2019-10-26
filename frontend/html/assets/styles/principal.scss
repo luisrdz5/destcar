@@ -1,0 +1,45 @@
+@import "variables.scss";
+
+.main{
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 0px 40px 40px;
+    height: 100%;
+  }
+  .main__title {
+    color: $blue3;
+    font-size: 25 px;
+  }
+
+.main__container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+.main__container__column{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+.main__container__column--order{
+    display: flex;
+    flex-direction: column;
+}
+.main__container__column--price{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main__container__column--route{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.main__container__map{
+    width: 60%;
+    display: flex;
+    border-radius: 100%;
+}

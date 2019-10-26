@@ -5,21 +5,11 @@ IMPORTS
 @import "header.scss";
 @import "footer.scss";
 @import "variables.scss";
+@import "principal.scss";
 
 body {
     margin: 0px;
     background-color: $background-color;
     font-family: $font-family;
 }
-.main{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 300px;
-  border-radius: 0px 0px 40px 40px;
-}
-.main__title {
-  color: $blue3;
-  font-size: 25 px;
-}
+
