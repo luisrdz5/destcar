@@ -140,7 +140,7 @@
       display: flex;
     }
   }
-  @media only screen and (max-width: 830px){
+  @media only screen and (max-width: $max-width){
     .header__img {
       width: 200px;
       text-align: center;
