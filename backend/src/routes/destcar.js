@@ -9,7 +9,7 @@ const destcarAPI = (app) => {
   router.get('/getUser', (req, res) => {
     res.send(`endpoint getUser`);
   });
-  router.get('/createUser', (req, res) => {
+  router.post('/createUser', (req, res) => {
     res.send(`endpoint createUser`);
   });
   router.get('/getDrivers', (req, res) => {
@@ -24,10 +24,13 @@ const destcarAPI = (app) => {
   router.get('/getquotes', (req, res) => {
     res.send(`endpoint getquotes`);
   });
-  router.get('/createTrip', (req, res) => {
+  router.post('/createTrip', (req, res) => {
     res.send(`endpoint createTrip`);
   });
-  router.get('/sendPayment', (req, res) => {
+  router.get('/getPayment', (req, res) => {
+    res.send(`endpoint getPayment`);
+  });
+  router.post('/sendPayment', (req, res) => {
     res.send(`endpoint sendPayment`);
   });
 
