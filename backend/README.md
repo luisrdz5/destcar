@@ -12,11 +12,11 @@ La arquitectura de Backend Estara compuesta de los siguientes endpoints:
 
 - createUser .- Este endpoint se utilizara para crear usuario
 - getUser .- Este endpoint se utilizara para obtener el usuario 
-- getDriver .- Este endpoint se utilizara para obtener al conductor
-- getTrip .- Este endpoint se utilizara para obtener el viaje que esta solicitando un usuario
-- createTrip .- Este endpoint se utilizara para crear un viaje por parte del usuario
-- getquotes .- Este endpoint se utilizara para cotizar un viaje 
 - getDrivers .- Este endpoint se utilizara para obtener los conductores cercanos al usuario
+- getDriver .- Este endpoint se utilizara para obtener al conductor
+- getTrip .- Este endpoint se utilizara para obtener el viaje/ruta que esta solicitando un usuario
+- getquotes .- Este endpoint se utilizara para cotizar un viaje 
+- createTrip .- Este endpoint se utilizara para crear un viaje por parte del usuario (esto realizara un cobro)
 - sendPayment .- Este endpoint se utilizara para enviar la forma de pago por parte del usuario
 #### Endpoints Opcionales
 - sendMessage .- Este endpoint se utilizara para enviar mensajes entre el conductor - usuario
