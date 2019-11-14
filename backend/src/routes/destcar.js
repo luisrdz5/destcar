@@ -6,18 +6,6 @@ const destcarAPI = (app) => {
   router.get('/', (req, res) => {
     res.send(`API v 0.1`);
   });
-  router.get('/getUser', (req, res) => {
-    res.send(`endpoint getUser`);
-  });
-  router.post('/createUser', (req, res) => {
-    res.send(`endpoint createUser`);
-  });
-  router.get('/getDrivers', (req, res) => {
-    res.send(`endpoint getDrivers`);
-  });
-  router.get('/getDriver', (req, res) => {
-    res.send(`endpoint getDriver`);
-  });
   router.get('/getTrip', (req, res) => {
     res.send(`endpoint getTrip`);
   });
