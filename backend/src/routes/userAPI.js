@@ -70,8 +70,6 @@ const userAPI = (app) => {
     router.put('/updateuser/:userId', async function(req, res, next) {
       const { userId } = req.params;
       const { body: user } = req;
-      console.log(userId);
-      console.log(user);
       try {
         const updatedUserId = await userService.updateUser({
           userId,

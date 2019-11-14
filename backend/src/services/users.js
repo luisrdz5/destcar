@@ -33,8 +33,6 @@ class UsersService {
     return deletedUserId;
   }
   async updateUser({ userId, user }) {
-      console.log(userId);
-      console.log(user);
     const updatedUserId = await this.mongoDB.update(this.collection, userId, user);
     return updatedUserId;
   }
