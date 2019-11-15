@@ -6,9 +6,10 @@ const destcarAPI = require('./routes/destcarAPI');
 const driverAPI = require('./routes/driverAPI');
 const userAPI = require('./routes/userAPI');
 const paymentsAPI = require('./routes/paymentsAPI');
+const tripsAPI = require('./routes/tripsAPI');
 
 app.use(express.json());
-
+tripsAPI(app);
 paymentsAPI(app);
 driverAPI(app);
 userAPI(app);
