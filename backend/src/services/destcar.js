@@ -2,7 +2,6 @@ const MongoLib = require('../lib/mongo');
 
 class DestcarService {
     constructor() {
-
         this.mongoDB = new MongoLib();
     }
     async getQuotes({ country }) {
@@ -11,6 +10,5 @@ class DestcarService {
         const quotes = await this.mongoDB.getAll(this.collection, query);
         return quotes || {};
     }
-    
 }
 module.exports = DestcarService;

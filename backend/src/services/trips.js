@@ -7,9 +7,10 @@ class TripService {
     this.collection = 'trips';
     this.mongoDB = new MongoLib();
   }
-  async getTrip({ route }) {
-    route = 'Se obtuvo una ruta';
-    return route || {};
+  async getTrip(route) {
+    const maps = new mapsAPI();
+    const data = maps.getAmount({route});
+    return data || {};
   }
   async createTrip({ route }) {
     return route || {};
