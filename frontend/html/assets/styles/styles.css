@@ -744,6 +744,90 @@ VARIABLES
   text-decoration: underline;
 }
 
+/*********************
+VARIABLES
+**********************/
+.payments {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+}
+
+.payments__container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  text-align: center;
+}
+
+.payments__register {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  text-align: center;
+}
+
+.payments input {
+  margin: 10px 0px;
+  background-color: #FFF;
+  border-left: 0px;
+  border-top: 0px;
+  border-right: 0px;
+  border: 1px solid #416D80;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: "Fredoka One", cursive;
+  padding: 0px 20px;
+  outline: none;
+  height: 30px;
+  width: 50%;
+}
+
+.payments button {
+  background-color: #05C4E6;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Muli", sans-serif;
+  height: 30px;
+  letter-spacing: 1px;
+  margin: 10px 0px;
+  width: 60%;
+}
+
+.payments__container--form--expiration--div {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.payments__container--form--expiration--div input {
+  width: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.payments__container--form--cvv {
+  width: 50%;
+  text-align: center;
+}
+
+.payments__container--form--cvv input {
+  width: 30px;
+}
+
+@media only screen and (max-width: 830px) {
+  .payments__register {
+    display: none;
+  }
+}
 body {
   margin: 0px;
   background-color: #FFF;

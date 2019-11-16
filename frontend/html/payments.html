@@ -57,25 +57,40 @@
                         </ul>
                     </div>
                 </header>
-                <section class="main">
-                    <div class="main__container">
-                        <div class="main__container__column">
-                            <div class="main__container__column--title" >
-                            </div>
-                            <div class="main__container__column--route" >
-                                <input type="input" class="main__container__column--route--from" placeholder="Mi Locación"/>
-                                <input type="input" class="main__container__column--route--to" placeholder="A donde quieres ir ..."/>
-                            </div>
-                            <div class="main__container__column--price" >
-                            </div>
-                            <div class="main__container__column--order" >
-                                <input class="main__container__column--order--confirm" type="submit" value="Cotizar " />
-                            </div>
+                <section class="payments">
+                    <div class="payments__container">
+                        <div>
+                            <label class="payments__container--title"> Payment Methods </label>
                         </div>
-                        <div class="main__container__map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15050.338706521878!2d-99.16123527648926!3d19.430342870583594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1572067079163!5m2!1ses-419!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        <div>
+                            <label class="payments__container--item"> <img src="./assets/images/cash.png" />Cash </label>
                         </div>
-
+                        <div>
+                            <label class="payments__container--item"> <img src="./assets/images/credit-card.png" />Credit Card </label>
+                        </div>
+                        <div>
+                            <button class="button">Agregar Forma de Pago</button>
+                        </div>
+                    </div>
+                    <div class="payments__register">
+                        <form action="payments__container--form">
+                            <input class="input" type="text" placeholder="Correo Electronico" >
+                            <input class="input" type="text" placeholder="Numero de Tarjeta" >
+                            <div>
+                                <label class="payments__container--form--expiration" >Fecha de Expiración</label>
+                            </div>
+                            <div class="payments__container--form--expiration--div">
+                                <input class="payments__container--form--mm" type="text" placeholder="mm" maxlength="2">
+                                <input class="payments__container--form--yy" type="text" placeholder="yy" maxlength="2">
+                            </div>
+                            <input class="input" type="text" placeholder="Nombre del titular" >
+                            <div class="payments__container--form--cvv">
+                                    <img src="./assets/images/cvv.png" alt="cvv">
+                                    <input  type="password" placeholder="cvv" maxlength="3">
+                            </div>
+                            <button class="button">Agregar Forma de Pago</button>
+                            <button class="button">Cancelar</button>
+                        </form>
                     </div>
                 </section>
                 <footer class="footer">
