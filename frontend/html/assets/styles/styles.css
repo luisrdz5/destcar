@@ -356,7 +356,7 @@ VARIABLES
 }
 
 .main__container__column--price {
-  height: 200px;
+  height: 80px;
   display: flex;
   flex-direction: column;
 }
@@ -398,15 +398,21 @@ VARIABLES
 }
 
 .main__container__column--price {
+  display: flex;
   width: 60%;
-  height: 200px;
-  background-color: rgba(0, 0, 0, 0.8);
+  height: 150px;
+  background-color: rgba(42, 42, 49, 0.959);
   color: white;
   border-radius: 15px;
   align-content: center;
-  margin: 10px;
-  display: flex;
+  margin: 25px;
+  padding: 10px;
   flex-direction: column;
+  align-items: center;
+}
+
+.main__container__column--price label {
+  padding: 0px 0px 7px 0px;
 }
 
 .main__container__map {
@@ -436,6 +442,10 @@ VARIABLES
   }
 
   .main__container__column--route input {
+    width: 300px;
+  }
+
+  .main__container__column--price {
     width: 300px;
   }
 }
