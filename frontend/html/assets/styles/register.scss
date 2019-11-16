@@ -1,0 +1,81 @@
+@import "variables.scss";
+
+.register input {
+    margin: 10px 0px;
+    background-color: $background-color;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    border: 1px solid $blue3;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: $font-family;
+    padding: 0px 20px;
+    outline: none;
+    height: 45px;
+    width: 90%;
+}
+
+.register button{
+    background-color: $blue2;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Muli', sans-serif;
+    height: 50px;
+    letter-spacing: 1px;
+    margin: 10px 0px;
+    width: 100%;
+
+}
+.register h2 {
+    text-align: center;
+}
+
+
+.register {
+    background: $grey1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 30px;
+    min-height: calc(100vh - 200px);
+  
+  }
+  .register__container {
+    background-color: rgba(255,255,255,0.2);
+    border: 2px solid white;
+    border-radius: 40px;
+    color: $blue3;
+    padding: 60px 68px 40px;
+    min-height: 500px;
+    width: 300px;
+    display:flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  .register__container--form{
+    display:flex;
+    flex-direction: column;
+  
+  }
+  .register__container--form label{
+  font-size: 14px;
+  }
+  .register__container--register{
+    font-size: 14px;
+    text-align: center;
+  }
+  .register__container--register a {
+  font-size: 16px;
+  color: $blue3;
+  font-weight: bold;
+  text-decoration: none;
+  }
+  .register__container--register a:hover {
+  text-decoration: underline;
+  }
