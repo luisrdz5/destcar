@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 import '../assets/styles/App.scss';
 
-const App = () => {
+const Home = () => {
   return (
     <div className='App'>
       <Header />
@@ -14,9 +14,8 @@ const App = () => {
         <Quote />
         <MapContainer />
       </div>
-
       <Footer />
     </div>
   );
 };
-export default App;
+export default Home;
