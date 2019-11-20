@@ -4,3 +4,8 @@ body {
     background-color: $background-color;
     font-family: $font-family;
 }
+.main__container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
