@@ -1,0 +1,31 @@
+@import "../variables.scss";
+
+.payments__register{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+}
+.payments__register--form--expiration--div {
+    text-align: center;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.payments__register--form--expiration--div input {
+    width: 30px !important;
+    display: flex;
+    flex-direction: row;
+}
+.payments__register--form--cvv{
+    width: 50% !important;
+    text-align: center !important;
+}
+.payments__register--form--cvv input{
+    width: 30px !important;
+}
+@media only screen and (max-width: $max-width){
+    .payments__register {
+        display: none;
+    }
+}

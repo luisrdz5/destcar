@@ -54,6 +54,9 @@ module.exports = {
     node: {
         fs: "empty"
      },
+    devServer: {
+         historyApiFallback: true,
+    },
     plugins: [
         new HtmlWebPackPlugin({
             template: './public/index.html',
