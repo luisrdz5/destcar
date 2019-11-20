@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import '../assets/styles/components/MapContainer.scss';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import '../assets/styles/components/MapContainer.scss';
 
 const style = {
   height: '74%',
+  width: '50%',
 }
 
 class MapContainer extends Component {
@@ -107,5 +108,6 @@ class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
+  //apiKey: config.googleAPIKey,
   apiKey: 'AIzaSyCmjvkXB_DMnBUNwxQztLMStyQmA_szbNw',
 })(MapContainer);
