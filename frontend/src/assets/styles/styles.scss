@@ -1,0 +1,19 @@
+/*********************
+IMPORTS
+**********************/
+
+@import "header.scss";
+@import "footer.scss";
+@import "variables.scss";
+@import "principal.scss";
+@import "404.scss";
+@import "login.scss";
+@import "register.scss";
+@import "payments.scss";
+
+body {
+    margin: 0px;
+    background-color: $background-color;
+    font-family: $font-family;
+}
+

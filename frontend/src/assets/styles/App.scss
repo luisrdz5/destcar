@@ -1,5 +1,6 @@
+@import "variables.scss";
 body {
-    margin: 0;
-    background-color: red;
-    color: white;
+    margin: 0px;
+    background-color: $background-color;
+    font-family: $font-family;
 }
