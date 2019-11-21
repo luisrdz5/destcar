@@ -45,7 +45,18 @@ const Header = (props) => {
           <li><Link to='/'>Pagos</Link></li>
           <li><Link to='/'>Contáctanos</Link></li>
           <li><Link to='/'>Acerca de Nosotros</Link></li>
-          <li><a href='#logout' onClick={handleLogout}> Cerrar Sesión </a></li>
+          {hasUser ? (
+            <li>
+              <a href='#logout' onClick={handleLogout}> Cerrar Sesión </a>
+              {' '}
+            </li>
+          ) : (
+            <li>
+              <Link to='/login'>
+                Iniciar Sesion
+              </Link>
+            </li>
+          )}
         </ul>
 
       </div>
@@ -68,7 +79,18 @@ const Header = (props) => {
           <p> Perfil </p>
         </div>
         <ul>
-          <li><a href='#logout' onClick={handleLogout}> Cerrar Sesión </a></li>
+        {hasUser ? (
+            <li>
+              <a href='#logout' onClick={handleLogout}> Cerrar Sesión </a>
+              {' '}
+            </li>
+          ) : (
+            <li>
+              <Link to='/login'>
+                Iniciar Sesion
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </header>
