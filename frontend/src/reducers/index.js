@@ -25,6 +25,11 @@ const reducer = (state, action) => {
         ...state,
         user: action.payload,
       };
+    case 'GET_ROUTE':
+      return {
+        ...state,
+        route: action.payload,
+      };
     default:
       return state;
   }
