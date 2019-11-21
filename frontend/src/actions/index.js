@@ -18,3 +18,7 @@ export const registerRequest = (payload) => ({
   type: 'REGISTER_REQUEST',
   payload,
 });
+export const getRoute = (payload) => ({
+  type: 'GET_ROUTE',
+  payload,
+});

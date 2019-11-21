@@ -14,6 +14,10 @@ const initialState = {
   "time": 0,
   "money": 0.00,
   "country": "mexico",
+  "route": [
+    {"lat": 19.42672619, "lng": -99.1718706}, 
+    {"lat": 19.4428928, "lng": -99.1718706}
+  ]
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

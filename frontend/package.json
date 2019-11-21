@@ -15,12 +15,13 @@
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "google-maps-react": "^2.0.2",
+    "md5": "^2.2.1",
     "path": "^0.12.7",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-geolocated": "^3.0.1",
-    "react-router-dom": "^5.1.2",
     "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
     "redux": "^4.0.4"
   },
   "devDependencies": {

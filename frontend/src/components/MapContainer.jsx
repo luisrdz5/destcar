@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Map, Polyline, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { setDestiny, setOrigin } from '../actions';
-import { Map, InfoWindow, Marker, GoogleApiWrapper,  } from 'google-maps-react';
 import { mapStyles } from '../assets/styles/MapStyles';
 import '../assets/styles/components/MapContainer.scss';
 import pinIcon from '../assets/images/pin.png';
@@ -29,8 +29,8 @@ class MapContainer extends Component {
               name='Current location'
               icon={{
                 url: pinIcon,
-                anchor: new google.maps.Point(10,10),
-                scaledSize: new google.maps.Size(15,20)
+                anchor: new google.maps.Point(10, 10),
+                scaledSize: new google.maps.Size(15, 20)
               }}
             />
           )}
@@ -41,12 +41,23 @@ class MapContainer extends Component {
               name='Current location'
               icon={{
                 url: pinIcon,
-                anchor: new google.maps.Point(10,10),
-                scaledSize: new google.maps.Size(15,20)
+                anchor: new google.maps.Point(10, 10),
+                scaledSize: new google.maps.Size(15, 20)
               }}
             />
           )}
-           
+            <Polyline
+              options={{ 
+                path: this.props.route,
+                strokeColor: '#ffffff',
+                strokeOpacity: 1,
+                strokeWeight: 6,
+                icons: [{
+                    offset: '0',
+                    repeat: '10px'
+                }],
+              }}
+          />
 
 
         </Map>
@@ -65,7 +76,8 @@ const mapStateToProps = state => {
     zoom: state.zoom,
     country: state.country,
     from: state.from,
-    to: state.to
+    to: state.to,
+    route: state.route,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({
