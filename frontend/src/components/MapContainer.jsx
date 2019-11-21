@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setDestiny, setOrigin } from '../actions';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper,  } from 'google-maps-react';
 import { mapStyles } from '../assets/styles/MapStyles';
 import '../assets/styles/components/MapContainer.scss';
 import pinIcon from '../assets/images/pin.png';
