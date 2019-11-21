@@ -10,10 +10,10 @@ class Quote extends Component {
       <div className='main__container__column'>
         <div className='main__container__column--title' />
         {!this.props.isGeolocationAvailable && (
-        <div>Your browser does not support Geolocation</div>
+        <div>Tu navegador no soporta Geolocalización, deberas capturar tu ubicación manualmente</div>
         )}
         {!this.props.isGeolocationEnabled && (
-        <div>Geolocation is not enabled</div>
+        <div>La Geolocalización esta deshabilitada en tu navegador, deberas capturar tu ubicación manualmente</div>
         )}
 
         <div className='main__container__column--route'>

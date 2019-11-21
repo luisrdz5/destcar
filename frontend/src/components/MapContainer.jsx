@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setDestiny, setOrigin } from '../actions';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { mapStyles } from '../assets/styles/MapStyles';
 import '../assets/styles/components/MapContainer.scss';
+import pinIcon from '../assets/images/pin.png';
 
 const style = {
   height: '600px',
@@ -13,101 +17,59 @@ class MapContainer extends Component {
       <div className='main__container__map'>
         <Map
           google={this.props.google}
-          zoom={14}
+          zoom={this.props.zoom}
+          initialCenter={this.props.defaultLocation}
           style={style}
-          styles={[
-            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-            {
-              featureType: 'administrative.locality',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'poi',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'geometry',
-              stylers: [{color: '#263c3f'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#6b9a76'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [{color: '#38414e'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#212a37'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#9ca5b3'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry',
-              stylers: [{color: '#746855'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#1f2835'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#f3d19c'}]
-            },
-            {
-              featureType: 'transit',
-              elementType: 'geometry',
-              stylers: [{color: '#2f3948'}]
-            },
-            {
-              featureType: 'transit.station',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [{color: '#17263c'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#515c6d'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.stroke',
-              stylers: [{color: '#17263c'}]
-            }
-          ]}
+          styles={mapStyles}
         >
+          {this.props.from &&(
+            <Marker
+              title={'Ubicación Actual'}
+              position={this.props.from}
+              name='Current location'
+              icon={{
+                url: pinIcon,
+                anchor: new google.maps.Point(10,10),
+                scaledSize: new google.maps.Size(15,20)
+              }}
+            />
+          )}
+          {this.props.to &&(
+            <Marker
+              title={'Destino'}
+              position={this.props.to}
+              name='Current location'
+              icon={{
+                url: pinIcon,
+                anchor: new google.maps.Point(10,10),
+                scaledSize: new google.maps.Size(15,20)
+              }}
+            />
+          )}
+           
 
-          <Marker
-            onClick={this.onMarkerClick}
-            name='Current location'
-          />
+
         </Map>
       </div>
     );
   }
 }
 
-export default GoogleApiWrapper({
+const mapDispatchToProps = {
+  setDestiny,
+  setOrigin,
+}
+const mapStateToProps = state => {
+  return {
+    defaultLocation: state.defaultLocation,
+    zoom: state.zoom,
+    country: state.country,
+    from: state.from,
+    to: state.to
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({
   //apiKey: config.googleAPIKey,
   apiKey: 'AIzaSyCmjvkXB_DMnBUNwxQztLMStyQmA_szbNw',
-})(MapContainer);
+})(MapContainer))
+
