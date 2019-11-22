@@ -1,5 +1,11 @@
 const express = require('express');
 const TripsService = require('../services/trips');
+const passport = require('passport');
+
+
+const scopesValidationHandler = require('../utils/middleware/scopesValidationHandler');
+//JWT strategy
+require('../utils/auth/strategies/jwt');
 
 const tripsAPI = (app) => {
     const router =  express.Router();
@@ -7,7 +13,10 @@ const tripsAPI = (app) => {
     const tripsService = new TripsService();
 
 
-    router.get('/getTrip', async function(req, res, next){
+    router.get('/getTrip', 
+      passport.authenticate('jwt', { session: false }),
+      scopesValidationHandler(['read:trips']),
+      async function(req, res, next){
         const { body: routes } = req;
         try {
           const route = await tripsService.getTrip(routes);
@@ -21,7 +30,10 @@ const tripsAPI = (app) => {
       });
 
 
-    router.get('/createTrip', (req, res) => {
+    router.get('/createTrip', 
+      passport.authenticate('jwt', { session: false }),
+      scopesValidationHandler(['create:trips']),
+      (req, res) => {
         res.send(`endpoint createTrip`);
     });
 }

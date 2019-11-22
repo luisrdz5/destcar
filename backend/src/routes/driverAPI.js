@@ -1,10 +1,19 @@
 const express = require('express');
 const DriversService = require('../services/drivers');
 const cacheResponse = require('../utils/cacheResponse');
+
 const {
   SIXTY_MINUTES_IN_SECONDS,
   FIVE_MINUTES_IN_SECONDS
 } = require('../utils/time');
+const passport = require('passport');
+
+
+const scopesValidationHandler = require('../utils/middleware/scopesValidationHandler');
+//JWT strategy
+require('../utils/auth/strategies/jwt');
+
+
 
 const driverAPI = (app) => {
     const router = express.Router();
@@ -13,7 +22,10 @@ const driverAPI = (app) => {
     router.get('/', (req, res) => {
       res.send(`API driver v 0.1`);
     });
-    router.get('/getDrivers', async function(req, res, next) {
+    router.get('/getDrivers', 
+    passport.authenticate('jwt', { session: false }),
+    scopesValidationHandler(['read:drivers']),
+    async function(req, res, next) {
       const { tags } = req.query;
       try {
         const drivers = await driverService.getDrivers({ tags });
@@ -27,7 +39,10 @@ const driverAPI = (app) => {
         next(err);
       }
     });
-    router.get('/getDriver/:driverId', async function(req, res, next){
+    router.get('/getDriver/:driverId', 
+      passport.authenticate('jwt', { session: false }),
+      scopesValidationHandler(['read:drivers']),
+      async function(req, res, next){
       cacheResponse(res, SIXTY_MINUTES_IN_SECONDS); 
       const { driverId } = req.params;
       try {
@@ -41,7 +56,10 @@ const driverAPI = (app) => {
         next(err);
       }
     });
-    router.post('/createdriver', async function(req, res, next) {
+    router.post('/createdriver', 
+    passport.authenticate('jwt', { session: false }),
+    scopesValidationHandler(['read:drivers']),
+      async function(req, res, next) {
       const { body: driver }= req;
       try{
         const createdDriverId = await driverService.createDriver({
@@ -55,7 +73,10 @@ const driverAPI = (app) => {
         next(err);
       } 
   });
-    router.delete('/deletedriver/:driverId', async function(req, res, next) {
+    router.delete('/deletedriver/:driverId', 
+    passport.authenticate('jwt', { session: false }),
+    scopesValidationHandler(['delete:driver']),
+    async function(req, res, next) {
       const { driverId } = req.params;
       try {
         const deletedDriverId = await driverService.deleteDriver({ driverId });
@@ -67,7 +88,10 @@ const driverAPI = (app) => {
         next(err);
       }
     });
-    router.put('/updatedriver/:driverId', async function(req, res, next) {
+    router.put('/updatedriver/:driverId', 
+    passport.authenticate('jwt', { session: false }),
+    scopesValidationHandler(['update:driver']),
+    async function(req, res, next) {
       const { driverId } = req.params;
       const { body: driver } = req;
       try {

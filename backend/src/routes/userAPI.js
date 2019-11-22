@@ -5,6 +5,11 @@ const {
   SIXTY_MINUTES_IN_SECONDS,
   FIVE_MINUTES_IN_SECONDS
 } = require('../utils/time');
+const passport = require('passport');
+
+const scopesValidationHandler = require('../utils/middleware/scopesValidationHandler');
+//JWT strategy
+require('../utils/auth/strategies/jwt');
 
 
 const userAPI = (app) => {
@@ -12,7 +17,10 @@ const userAPI = (app) => {
     app.use('/api/user/', router);
     const userService = new UserService();
 
-    router.get('/getusers', async function(req, res, next) {
+    router.get('/getusers', 
+    passport.authenticate('jwt', { session: false }),
+    scopesValidationHandler(['read:users']),
+    async function(req, res, next) {
       const { tags } = req.query;
       try {
         const users = await userService.getUsers({ tags });
@@ -26,7 +34,10 @@ const userAPI = (app) => {
         next(err);
       }
     });
-    router.get('/getUser/:userId', async function(req, res, next){
+    router.get('/getUser/:userId', 
+    passport.authenticate('jwt', { session: false }),
+    scopesValidationHandler(['read:users']),
+    async function(req, res, next){
       cacheResponse(res, SIXTY_MINUTES_IN_SECONDS); 
       const { userId } = req.params;
       try {
@@ -41,7 +52,10 @@ const userAPI = (app) => {
       }
     });
 
-    router.post('/createuser', async function(req, res, next) {
+    router.post('/createuser', 
+    passport.authenticate('jwt', { session: false }),
+    scopesValidationHandler(['create:users']),
+    async function(req, res, next) {
         const { body: user }= req;
         try{
           const createdUserId = await userService.createUser({
@@ -55,7 +69,10 @@ const userAPI = (app) => {
           next(err);
         } 
     });
-    router.delete('/deleteuser/:userId', async function(req, res, next) {
+    router.delete('/deleteuser/:userId', 
+    passport.authenticate('jwt', { session: false }),
+    scopesValidationHandler(['delete:users']),
+    async function(req, res, next) {
       const { userId } = req.params;
       try {
         const deletedUserId = await userService.deleteUser({ userId });
@@ -67,7 +84,10 @@ const userAPI = (app) => {
         next(err);
       }
     });
-    router.put('/updateuser/:userId', async function(req, res, next) {
+    router.put('/updateuser/:userId', 
+    passport.authenticate('jwt', { session: false }),
+    scopesValidationHandler(['update:users']),
+    async function(req, res, next) {
       const { userId } = req.params;
       const { body: user } = req;
       try {

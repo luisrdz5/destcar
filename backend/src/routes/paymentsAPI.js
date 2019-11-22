@@ -1,4 +1,10 @@
 const express = require('express');
+const passport = require('passport');
+
+
+const scopesValidationHandler = require('../utils/middleware/scopesValidationHandler');
+//JWT strategy
+require('../utils/auth/strategies/jwt');
 
 const PaymentsService = require('../services/payments');
 
@@ -7,7 +13,10 @@ const paymentsAPI = (app) => {
     app.use('/api/payments/', router);
     const paymentService = new PaymentsService();
 
-    router.get('/getPayments/:idUser', async function(req, res, next) {
+    router.get('/getPayments/:idUser', 
+      passport.authenticate('jwt', { session: false }),
+      scopesValidationHandler(['read:payments']),
+      async function(req, res, next) {
         const { idUser } = req.params;
         console.log(idUser);
         try {
@@ -21,7 +30,10 @@ const paymentsAPI = (app) => {
           next(err);
         }
       });
-    router.get('/getPayment/:idPayment', async function(req, res, next) {
+    router.get('/getPayment/:idPayment', 
+      passport.authenticate('jwt', { session: false }),
+      scopesValidationHandler(['read:payments']),
+      async function(req, res, next) {
         const { idPayment } = req.params;
         try {
           const payment = await paymentService.getPayment({ idPayment });
@@ -34,7 +46,10 @@ const paymentsAPI = (app) => {
           next(err);
         }
       });
-    router.post('/createPayment', async function(req, res, next) {
+    router.post('/createPayment', 
+      passport.authenticate('jwt', { session: false }),
+      scopesValidationHandler(['create:payments']),
+      async function(req, res, next) {
         const { body: payment }= req;
         try{
           const createdPaymentId = await paymentService.createPayment({
@@ -48,7 +63,10 @@ const paymentsAPI = (app) => {
           next(err);
         } 
     });
-    router.delete('/deletePayment/:idPayment', async function(req, res, next) {
+    router.delete('/deletePayment/:idPayment', 
+      passport.authenticate('jwt', { session: false }),
+      scopesValidationHandler(['delete:payments']),    
+      async function(req, res, next) {
       const { idPayment } = req.params;
       try {
         const payment = await paymentService.deletePayment({ idPayment });
