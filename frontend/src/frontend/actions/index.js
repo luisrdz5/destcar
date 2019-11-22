@@ -32,9 +32,11 @@ export const registerUser = (payload, redirectUrl) => {
   return (dispatch) => {
     axios.post('/auth/sign-up', payload)
       .then(({ data }) => {
-        document.cookie = `email=${data.data.email}`;
-        document.cookie = `name=${data.data.name}`;
-        document.cookie = `id=${data.id}`;
+        document.cookie = `email=${data.user.userEmail}`;
+        document.cookie = `name=${data.user.userName}`;
+        document.cookie = `id=${data.user.id}`;
+        document.cookie = `token=${data.token}`;
+
         dispatch(registerRequest(data));
       })
       .then(() => {

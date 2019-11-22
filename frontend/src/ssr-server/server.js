@@ -79,7 +79,6 @@ app.post('/auth/sign-in', async (req, res, next) => {
           next(error);
         }
         const { token, ...user } = data;
-        console.log(`(server.js) aqui viene el user:  ${JSON.stringify(user.user)}`);
         res.cookie("token", token, {
           httpOnly: !config.dev,
           secure: !config.dev
@@ -94,15 +93,15 @@ app.post('/auth/sign-in', async (req, res, next) => {
 
 app.post('/auth/sign-up', async (req, res, next) => {
   const { body: user } = req;
+  const userData = {...user, apiKeyToken: config.apiKeyToken }
   try {
-    await axios({
+    const dataResponse = await axios({
       url: `${config.apiUrl}/api/auth/sign-up`,
       method: 'post',
-      data: user,
-    })
-      .then((response) => {
-        res.status(201).json(response.data);
-      });
+      data: userData,
+    });
+    res.status(201).json(dataResponse.data);
+
   } catch (error) {
     next(error);
   }
