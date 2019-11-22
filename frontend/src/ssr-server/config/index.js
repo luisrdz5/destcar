@@ -13,7 +13,8 @@ const config = {
   facebookClientId:process.env.FACEBOOK_CLIENT_ID,
   facebookClientSecret:process.env.FACEBOOK_CLIENT_SECRET,
   linkedinClientId:process.env.LINKEDIN_CLIENT_ID,
-  linkedinClientSecret:process.env.LINKEDIN_CLIENT_SECRET
+  linkedinClientSecret:process.env.LINKEDIN_CLIENT_SECRET,
+  nodeEnv:process.env.NODE_ENV
 };
 
 module.exports = { config }

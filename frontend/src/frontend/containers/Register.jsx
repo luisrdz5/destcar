@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerRequest } from '../actions';
-import Footer from "../components/Footer";
+import Footer from '../components/Footer';
 import '../assets/styles/containers/Register.scss';
 
 const Register = (props) => {
@@ -24,39 +24,39 @@ const Register = (props) => {
   };
   return (
     <>
-      <section className="register">
-        <section className="register__container">
+      <section className='register'>
+        <section className='register__container'>
           <h2>Regístrate</h2>
-          <form action="register__container--form" onSubmit={handleSubmit}>
-            <input 
+          <form action='register__container--form' onSubmit={handleSubmit}>
+            <input
               name='name'
-              className="input" 
-              type="text" 
-              placeholder="Nombre"
+              className='input'
+              type='text'
+              placeholder='Nombre'
               onChange={handleInput}
               required
             />
-            <input 
+            <input
               name='password'
-              className="input" 
-              type="text" 
-              placeholder="Correo" 
+              className='input'
+              type='text'
+              placeholder='Correo'
               onChange={handleInput}
               required
             />
-            <input 
+            <input
               name='password'
-              className="input" 
-              type="password" 
-              placeholder="Contraseña" 
+              className='input'
+              type='password'
+              placeholder='Contraseña'
               onChange={handleInput}
               required
             />
             <button type='submit' className='button'>Registrarme</button>
           </form>
-          <p className="register__container--register">
-            {" "}
-            <Link to="/login">Iniciar Sesión</Link>
+          <p className='register__container--register'>
+            {' '}
+            <Link to='/login'>Iniciar Sesión</Link>
           </p>
         </section>
       </section>

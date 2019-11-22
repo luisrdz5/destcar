@@ -67,8 +67,8 @@ if (ENV === 'development') {
   app.disable('x-powered-by');
 }
 
-app.post("/auth/sign-in", async (req, res, next) {
-  passport.authenticate("basic", (error, data) {
+app.post("/auth/sign-in", async (req, res, next) => {
+  passport.authenticate("basic", (error, data) => {
     try {
       if (error || !data) {
         next(boom.unauthorized());
@@ -92,7 +92,7 @@ app.post("/auth/sign-in", async (req, res, next) {
   })(req, res, next);
 });
 
-app.post("/auth/sign-up", async function(req, res, next) {
+app.post("/auth/sign-up", async (req, res, next) => {
   const { body: user } = req;
   try {
     await axios({
@@ -108,7 +108,7 @@ app.post("/auth/sign-up", async function(req, res, next) {
 
 app.get("/movies", async function(req, res, next) {});
 
-app.post("/user-movies", async function(req, res, next) {
+app.post("/user-movies", async (req, res, next) => {
   try {
     const { body: userMovie } = req;
     const { token } = req.cookies;
@@ -130,7 +130,7 @@ app.post("/user-movies", async function(req, res, next) {
   }
 });
 
-app.delete("/user-movies/:userMovieId", async function(req, res, next) {
+app.delete("/user-movies/:userMovieId", async (req, res, next) => {
   try {
     const { userMovieId } = req.params;
     const { token } = req.cookies;

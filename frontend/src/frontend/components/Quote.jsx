@@ -10,14 +10,14 @@ class Quote extends Component {
       <div className='main__container__column'>
         <div className='main__container__column--title' />
         {!this.props.isGeolocationAvailable && (
-        <div>Tu navegador no soporta Geolocalización, deberas capturar tu ubicación manualmente</div>
+          <div>Tu navegador no soporta Geolocalización, deberas capturar tu ubicación manualmente</div>
         )}
         {!this.props.isGeolocationEnabled && (
-        <div>La Geolocalización esta deshabilitada en tu navegador, deberas capturar tu ubicación manualmente</div>
+          <div>La Geolocalización esta deshabilitada en tu navegador, deberas capturar tu ubicación manualmente</div>
         )}
 
         <div className='main__container__column--route'>
-          <input type='input' className='main__container__column--route--from' placeholder={this.props.coords ? (this.props.coords.latitude)   : ('Donde quieres iniciar ...')} />
+          <input type='input' className='main__container__column--route--from' placeholder={this.props.coords ? (this.props.coords.latitude) : ('Donde quieres iniciar ...')} />
           <input type='input' className='main__container__column--route--to' placeholder='A donde quieres ir ...' />
         </div>
         <div className='main__container__column--price'>

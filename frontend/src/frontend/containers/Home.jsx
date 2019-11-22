@@ -11,7 +11,7 @@ const Home = ({ location, country }) => {
   return (
     <div className='App'>
       <Header />
-      <div className="main__container">
+      <div className='main__container'>
         <Quote />
         <MapContainer />
       </div>
@@ -19,7 +19,7 @@ const Home = ({ location, country }) => {
     </div>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     location: state.location,
     country: state.country,

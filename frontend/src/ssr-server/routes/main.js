@@ -4,9 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { StaticRouter } from 'react-router';
 import { renderRoutes } from 'react-router-config';
-import axios from 'axios';
 import Routes from '../../frontend/routes/serverRoutes';
-import Layout from '../../frontend/components/Layout';
 import reducer from '../../frontend/reducers/index';
 import render from '../render/index';
 import polyfill from '@babel/polyfill'; // eslint-disable-line
@@ -26,39 +24,36 @@ const main = async (req, res, next) => {
           name,
         };
       }
-      let movieList = await axios({
-        url: `${process.env.API_URL}/api/movies`,
-        headers: { Authorization: `Bearer ${token}` },
-        method: 'get',
-      });
-      let userMovies = await axios({
-        url: `${process.env.API_URL}/api/user-movies/${id}`,
-        headers: { Authorization: `Bearer ${token}` },
-        method: 'get',
-      });
-      movieList = movieList.data.data;
-      userMovies = userMovies.data.data;
-      let arrayUser;
-      const dataUser = userMovies.map((info) => {
-        arrayUser = movieList.filter((movie) => movie.id === info.movieId)
-        return (arrayUser[0]);
-      });
       initialState = {
         user,
-        playing: {},
-        myList: dataUser,
-        //myList: movieList.filter(movie => movie.contentRating === 'PG' && movie.id),
-        trends: movieList.filter((movie) => movie.contentRating === 'PG' && movie.id),
-        originals: movieList.filter((movie) => movie.contentRating === 'G' && movie.id),
+        defaultLocation: { lat: 19.42672619, lng: -99.1718706 },
+        zoom: 15,
+        from: { lat: 19.42672619, lng: -99.1718706 },
+        to:{ lat: 19.4428928, lng: -99.1718706 },
+        distance: 0,
+        time: 0,
+        money: 0.00,
+        country: "mexico",
+        route: [
+          {lat: 19.42672619, lng: -99.1718706},
+          {lat: 19.4428928, lng: -99.1718706}
+        ]
       };
 
     } catch (err) {
       initialState = {
-        user: {},
-        playing: {},
-        myList: [],
-        trends: {},
-        originals: {},
+        defaultLocation: { lat: 19.42672619, lng: -99.1718706 },
+        zoom: 15,
+        from: { lat: 19.42672619, lng: -99.1718706 },
+        to:{ lat: 19.4428928, lng: -99.1718706 },
+        distance: 0,
+        time: 0,
+        money: 0.00,
+        country: "mexico",
+        route: [
+          {lat: 19.42672619, lng: -99.1718706},
+          {lat: 19.4428928, lng: -99.1718706}
+        ]
       };
       console.log(err);
     }
@@ -70,9 +65,7 @@ const main = async (req, res, next) => {
           location={req.url}
           context={{}}
         >
-          <Layout>
             {renderRoutes(Routes(isLogged))}
-          </Layout>
         </StaticRouter>
       </Provider>,
     );

@@ -4,12 +4,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         destiny: [action.payload],
-      }
+      };
     case 'SET_ORIGIN':
       return {
         ...state,
         origin: [action.payload],
-      }
+      };
     case 'LOGIN_REQUEST':
       return {
         ...state,

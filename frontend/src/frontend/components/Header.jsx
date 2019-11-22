@@ -26,9 +26,9 @@ const Header = (props) => {
         <div className='header__burguer__menu--profile'>
           <div className='header__burguer__menu--profile--photo'>
             <div className='header__burguer__menu--profile--container'>
-            { hasUser ?
-            (<img className='header__burguer__menu--profile--photo--img' src={gravatar(user.email)} alt={user.email} />) :
-            (<img className='header__burguer__menu--profile--photo--img' src={perfilIcon} alt='User' />)}
+              { hasUser ?
+                (<img className='header__burguer__menu--profile--photo--img' src={gravatar(user.email)} alt={user.email} />) :
+                (<img className='header__burguer__menu--profile--photo--img' src={perfilIcon} alt='User' />)}
               <div className='header__burguer__menu--profile--photo--rating'>
   4.2
                 {' '}
@@ -73,13 +73,13 @@ const Header = (props) => {
       </div>
       <div className='header__menu'>
         <div className='header__menu--profile'>
-        { hasUser ?
+          { hasUser ?
             <img src={gravatar(user.email)} alt={user.email} /> :
             <img className='header__menu' src={userIcon} alt='User' />}
           <p> Perfil </p>
         </div>
         <ul>
-        {hasUser ? (
+          {hasUser ? (
             <li>
               <a href='#logout' onClick={handleLogout}> Cerrar Sesión </a>
               {' '}
@@ -94,8 +94,8 @@ const Header = (props) => {
         </ul>
       </div>
     </header>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => {
   return {

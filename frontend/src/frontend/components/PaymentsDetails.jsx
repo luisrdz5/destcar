@@ -13,14 +13,16 @@ const PaymentDetails = () => {
         <label className='payments__container--item'>
           {' '}
           <img src={cashIcon} />
-          Cash{' '}
+          Cash
+          {' '}
         </label>
       </div>
       <div>
         <label className='payments__container--item'>
           {' '}
           <img src={ccIcon} />
-          Credit Card{' '}
+          Credit Card
+          {' '}
         </label>
       </div>
       <div>

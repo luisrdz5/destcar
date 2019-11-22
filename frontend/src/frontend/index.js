@@ -1,31 +1,27 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { createStore, compose } from "redux";
-import reducer from "./reducers";
-import App from "./routes/App";
+import React from 'react';
+import { hydrate } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { Router } from 'react-router';
+import { createBrowserHistory } from 'history';
+import reducer from './reducers';
+import App from './routes/App';
 
-const initialState = {
-  "defaultLocation": { lat: 19.42672619, lng: -99.1718706 },
-  "zoom": 15,
-  "from": { lat: 19.42672619, lng: -99.1718706 },
-  "to":{ lat: 19.4428928, lng: -99.1718706 },
-  "distance": 0,
-  "time": 0,
-  "money": 0.00,
-  "country": "mexico",
-  "route": [
-    {"lat": 19.42672619, "lng": -99.1718706}, 
-    {"lat": 19.4428928, "lng": -99.1718706}
-  ]
-};
+if (typeof window !== 'undefined') {
+  let composeEnhacers;
+  if (process.env.NODE_ENV === 'production') composeEnhacers = compose;
+  else composeEnhacers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const preloadedState = window.__PRELOADED_STATE__;
+  const store = createStore(reducer, preloadedState, composeEnhacers(applyMiddleware(thunk)));
+  const history = createBrowserHistory();
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, initialState, composeEnhancers());
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("app")
-);
+  hydrate(
+    <Provider store={store}>
+      <Router history={history}>
+        <App isLogged={(preloadedState.user.id)}/>
+      </Router>
+    </Provider>,
+    document.getElementById('app'),
+  );
+}

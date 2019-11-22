@@ -6,16 +6,16 @@ import PaymentsDetails from '../components/PaymentsDetails';
 import '../assets/styles/containers/Payments.scss';
 
 const Payments = () => {
-    return (
-        <>
-            <Header /> 
-            <section className="payments">
-                <PaymentsDetails />
-                <PaymentsRegister />
-            </section>
-            <Footer />
-        </>
-    )
-}
+  return (
+    <>
+      <Header />
+      <section className='payments'>
+        <PaymentsDetails />
+        <PaymentsRegister />
+      </section>
+      <Footer />
+    </>
+  );
+};
 
 export default Payments;

@@ -9,7 +9,7 @@ import pinIcon from '../assets/images/pin.png';
 const style = {
   height: '600px',
   width: '50%',
-}
+};
 
 class MapContainer extends Component {
   render() {
@@ -22,43 +22,42 @@ class MapContainer extends Component {
           style={style}
           styles={mapStyles}
         >
-          {this.props.from &&(
+          {this.props.from && (
             <Marker
-              title={'Ubicación Actual'}
+              title='Ubicación Actual'
               position={this.props.from}
               name='Current location'
               icon={{
                 url: pinIcon,
                 anchor: new google.maps.Point(10, 10),
-                scaledSize: new google.maps.Size(15, 20)
+                scaledSize: new google.maps.Size(15, 20),
               }}
             />
           )}
-          {this.props.to &&(
+          {this.props.to && (
             <Marker
-              title={'Destino'}
+              title='Destino'
               position={this.props.to}
               name='Current location'
               icon={{
                 url: pinIcon,
                 anchor: new google.maps.Point(10, 10),
-                scaledSize: new google.maps.Size(15, 20)
+                scaledSize: new google.maps.Size(15, 20),
               }}
             />
           )}
-            <Polyline
-              options={{ 
-                path: this.props.route,
-                strokeColor: '#ffffff',
-                strokeOpacity: 1,
-                strokeWeight: 6,
-                icons: [{
-                    offset: '0',
-                    repeat: '10px'
-                }],
-              }}
+          <Polyline
+            options={{
+              path: this.props.route,
+              strokeColor: '#ffffff',
+              strokeOpacity: 1,
+              strokeWeight: 6,
+              icons: [{
+                offset: '0',
+                repeat: '10px',
+              }],
+            }}
           />
-
 
         </Map>
       </div>
@@ -69,8 +68,8 @@ class MapContainer extends Component {
 const mapDispatchToProps = {
   setDestiny,
   setOrigin,
-}
-const mapStateToProps = state => {
+};
+const mapStateToProps = (state) => {
   return {
     defaultLocation: state.defaultLocation,
     zoom: state.zoom,
@@ -83,5 +82,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({
   //apiKey: config.googleAPIKey,
   apiKey: 'AIzaSyCmjvkXB_DMnBUNwxQztLMStyQmA_szbNw',
-})(MapContainer))
+})(MapContainer));
 

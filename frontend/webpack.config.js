@@ -74,9 +74,8 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               prependData: `
-              @import "${path.resolve(__dirname, 'src/frontend/assets/styles/Vars.scss')}";
-              @import "${path.resolve(__dirname, 'src/frontend/assets/styles/Media.scss')}";
-              @import "${path.resolve(__dirname, 'src/frontend/assets/styles/Base.scss')}";
+              @import "${path.resolve(__dirname, 'src/frontend/assets/styles/variables.scss')}";
+              @import "${path.resolve(__dirname, 'src/frontend/assets/styles/App.scss')}";
               `,
             },
           },

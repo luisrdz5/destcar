@@ -1,10 +1,10 @@
-export const setDestiny = (payload => {
+export const setDestiny = ((payload) => {
   type: 'SET_DESTINY',
-  payload
+  payload;
 });
-export const setOrigin = (payload => {
+export const setOrigin = ((payload) => {
   type: 'SET_ORIGIN',
-  payload
+  payload;
 });
 export const loginRequest = (payload) => ({
   type: 'LOGIN_REQUEST',

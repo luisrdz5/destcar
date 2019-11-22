@@ -9,13 +9,13 @@ import Payments from '../containers/Payments';
 const App = () => {
   return (
     <BrowserRouter>
-        <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/payments' component={Payments} />
-            <Route component={NotFound} />
-        </Switch>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/register' component={Register} />
+        <Route exact path='/payments' component={Payments} />
+        <Route component={NotFound} />
+      </Switch>
     </BrowserRouter>
   );
 };
