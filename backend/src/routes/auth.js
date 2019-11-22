@@ -72,8 +72,9 @@ function authApi(app) {
       next(error);
     }
   });
-  router.post('/sign-provider',validationHandler(createProviderUserSchema),
-   async function(req, res, next){
+  router.post('/sign-provider',
+    validationHandler(createProviderUserSchema),
+    async function(req, res, next){
      const { body } = req;
      const {apiKeyToken, ...user}= body;
      if(!apiKeyToken){
@@ -86,6 +87,7 @@ function authApi(app) {
       if(!apiKey){
         next(boom.unauthorized());
       }
+      
       const { _id: id, name, email} = queriedUser;
       const payload = {
         sub: id,
