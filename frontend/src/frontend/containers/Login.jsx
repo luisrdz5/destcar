@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import googleIcon from '../assets/images/google.png';
 import facebookIcon from '../assets/images/icons8-facebook-nuevo-48.png';
 import twitterIcon from '../assets/images/icons8-twitter-16.png';
-import { loginRequest } from '../actions';
+import { loginUser } from '../actions';
 import '../assets/styles/containers/Login.scss';
 
 const Login = (props) => {
@@ -20,8 +20,7 @@ const Login = (props) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.loginRequest(form);
-    props.history.push('/');
+    props.loginUser(form, '/');
   };
 
   return (
@@ -79,7 +78,7 @@ const Login = (props) => {
   );
 };
 const mapDispatchToProps = {
-  loginRequest,
+  loginUser,
 
 };
 

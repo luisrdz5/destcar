@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import gravatar from '../utils/gravatar';
 import '../assets/styles/components/Header.scss';
-import { logoutRequest } from '../actions';
+import { logoutUser } from '../actions';
 import perfilIcon from '../assets/images/perfil.jpg';
 import starIcon from '../assets/images/star.png';
 import logoVertical from '../assets/images/logo-vertical.png';
@@ -13,7 +13,7 @@ const Header = (props) => {
   const { user } = props;
   const hasUser = user;
   const handleLogout = () => {
-    props.logoutRequest({});
+    props.logoutUser({});
     window.location.href = '/login';
   };
   return (
@@ -103,6 +103,6 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = {
-  logoutRequest,
+  logoutUser,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

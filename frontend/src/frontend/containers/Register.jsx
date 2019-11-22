@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { registerRequest } from '../actions';
+import { registerUser } from '../actions';
 import Footer from '../components/Footer';
 import '../assets/styles/containers/Register.scss';
 
@@ -19,8 +19,7 @@ const Register = (props) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.registerRequest(form);
-    props.history.push('/');
+    props.registerUser(form, '/');
   };
   return (
     <>
@@ -37,7 +36,7 @@ const Register = (props) => {
               required
             />
             <input
-              name='password'
+              name='email'
               className='input'
               type='text'
               placeholder='Correo'
@@ -65,7 +64,7 @@ const Register = (props) => {
   );
 };
 const mapDispatchToProps = {
-  registerRequest,
+  registerUser,
 };
 
 export default connect(null, mapDispatchToProps)(Register);
