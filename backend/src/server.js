@@ -7,8 +7,10 @@ const driverAPI = require('./routes/driverAPI');
 const userAPI = require('./routes/userAPI');
 const paymentsAPI = require('./routes/paymentsAPI');
 const tripsAPI = require('./routes/tripsAPI');
+const authAPI = require('./routes/auth');
 
 app.use(express.json());
+authAPI(app);
 tripsAPI(app);
 paymentsAPI(app);
 driverAPI(app);
