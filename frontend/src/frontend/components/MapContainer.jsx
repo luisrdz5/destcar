@@ -29,8 +29,8 @@ class MapContainer extends Component {
               name='Current location'
               icon={{
                 url: pinIcon,
-                anchor: new google.maps.Point(10, 10),
-                scaledSize: new google.maps.Size(15, 20),
+                anchor: new google.maps.Point(0, 0),
+                scaledSize: new google.maps.Size(15, 30),
               }}
             />
           )}
@@ -42,7 +42,7 @@ class MapContainer extends Component {
               icon={{
                 url: pinIcon,
                 anchor: new google.maps.Point(10, 10),
-                scaledSize: new google.maps.Size(15, 20),
+                scaledSize: new google.maps.Size(15, 30),
               }}
             />
           )}
@@ -51,7 +51,7 @@ class MapContainer extends Component {
               path: this.props.route,
               strokeColor: '#ffffff',
               strokeOpacity: 1,
-              strokeWeight: 6,
+              strokeWeight: 3,
               icons: [{
                 offset: '0',
                 repeat: '10px',

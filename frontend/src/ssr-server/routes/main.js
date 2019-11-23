@@ -29,14 +29,30 @@ const main = async (req, res, next) => {
         defaultLocation: { lat: 19.42672619, lng: -99.1718706 },
         zoom: 15,
         from: { lat: 19.42672619, lng: -99.1718706 },
-        to:{ lat: 19.4428928, lng: -99.1718706 },
+        to: { lat: 19.4428928, lng: -99.1718706 },
         distance: 0,
         time: 0,
         money: 0.00,
-        country: "mexico",
+        country: 'mexico',
         route: [
-          {lat: 19.42672619, lng: -99.1718706},
-          {lat: 19.4428928, lng: -99.1718706}
+          { 'lat': 19.4255964, 'lng': -99.17187729999999 },
+          { 'lat': 19.4265357, 'lng': -99.16958269999999 },
+          { 'lat': 19.4254854, 'lng': -99.1717721 },
+          { 'lat': 19.4255964, 'lng': -99.17187729999999 },
+          { 'lat': 19.4251133, 'lng': -99.17138829999999 },
+          { 'lat': 19.4254854, 'lng': -99.1717721 },
+          { 'lat': 19.4222107, 'lng': -99.1701959 },
+          { 'lat': 19.4251133, 'lng': -99.17138829999999 },
+          { 'lat': 19.4257718, 'lng': -99.1532533 },
+          { 'lat': 19.4222107, 'lng': -99.1701959 },
+          { 'lat': 19.4241749, 'lng': -99.13713659999999 },
+          { 'lat': 19.4257718, 'lng': -99.1532533 },
+          { 'lat': 19.4240908, 'lng': -99.1347076 },
+          { 'lat': 19.4241749, 'lng': -99.13713659999999 },
+          { 'lat': 19.4319716, 'lng': -99.1334254 },
+          { 'lat': 19.4240908, 'lng': -99.1347076 },
+          { 'lat': 19.4319574, 'lng': -99.13330669999999 },
+          { 'lat': 19.4319716, 'lng': -99.1334254 }
         ]
       };
 
@@ -45,15 +61,15 @@ const main = async (req, res, next) => {
         defaultLocation: { lat: 19.42672619, lng: -99.1718706 },
         zoom: 15,
         from: { lat: 19.42672619, lng: -99.1718706 },
-        to:{ lat: 19.4428928, lng: -99.1718706 },
+        to: { lat: 19.4428928, lng: -99.1718706 },
         distance: 0,
         time: 0,
         money: 0.00,
-        country: "mexico",
+        country: 'mexico',
         route: [
-          {lat: 19.42672619, lng: -99.1718706},
-          {lat: 19.4428928, lng: -99.1718706}
-        ]
+          { lat: 19.42672619, lng: -99.1718706 },
+          { lat: 19.4428928, lng: -99.1718706 },
+        ],
       };
       console.log(err);
     }
@@ -65,7 +81,7 @@ const main = async (req, res, next) => {
           location={req.url}
           context={{}}
         >
-            {renderRoutes(Routes(isLogged))}
+          {renderRoutes(Routes(isLogged))}
         </StaticRouter>
       </Provider>,
     );

@@ -100,7 +100,6 @@ export const getQuote = (payload) => {
   return (dispatch) => {
     axios.post('/getTrip', payload)
       .then(({ data }) => {
-        console.log(`(action) va el data: ${JSON.stringify(data)}`);
         dispatch(setRoute(data));
       })
       .catch((err) => dispatch(setError(err)));

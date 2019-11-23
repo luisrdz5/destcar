@@ -1,3 +1,4 @@
+/* eslint-disable react/no-this-in-sfc */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
@@ -44,25 +45,26 @@ const Quote = (props) => {
           <img src={carIcon} alt='car' />
           <label className='main__container__column--price--title'> Tarifa Estimada </label>
           <label>
-            Precio $
+         Precio $
             {' '}
             {props.money}
           </label>
           <label>
-            Tiempo
+         Tiempo
             {' '}
             {props.time}
             {' '}
-            mins.
+         mins.
           </label>
           <label>
-            Distancia:
+         Distancia:
             {' '}
             {props.distance}
             {' '}
-            kms.
+         kms.
           </label>
         </div>
+
         <div className='main__container__column--order'>
           <input className='main__container__column--order--confirm' type='submit' value='Cotizar' />
         </div>
