@@ -37,8 +37,8 @@ const reducer = (state, action) => {
         to: action.payload.data.endLocation,
         route: action.payload.data.route,
         money: action.payload.data.money,
-        time: action.payload.data.time,
-        distance: action.payload.data.distance,
+        time: parseFloat(action.payload.data.time / 60).toFixed(2),
+        distance: parseFloat(action.payload.data.distance / 1000).toFixed(2),
       };
     case 'SET_ERROR':
       return {
