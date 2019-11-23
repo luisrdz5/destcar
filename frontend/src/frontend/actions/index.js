@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+//const domain = 'https://www.destcar.com';
+const domain = 'http://localhost:8000';
+
 export const setDestiny = (payload) => ({
   type: 'SET_DESTINY',
   payload,
@@ -80,11 +83,11 @@ export const logoutUser = (payload) => {
   };
 };
 export const loginUserFacebook = (redirectUrl) => {
-  window.location.href = '/auth/facebook';
+  window.location.href = `${domain}/auth/facebook`;
 };
 export const loginUserTwitter = (redirectUrl) => {
-  window.location.href = '/auth/twitter';
+  window.location.href = `${domain}/auth/twitter`;
 };
 export const loginUserGoogle = (redirectUrl) => {
-  window.location.href = '/auth/google';
+  window.location.href = `${domain}/auth/google`;
 };
