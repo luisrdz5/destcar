@@ -73,13 +73,13 @@ app.post('/auth/sign-in', async (req, res, next) => {
       if (error || !data) {
         next(boom.unauthorized());
       }
-      
+
       req.login(data, { session: false }, async (error) => {
         if (error) {
           next(error);
         }
         const { token, ...user } = data;
-        res.cookie("token", token, {
+        res.cookie('token', token, {
           httpOnly: !config.dev,
           secure: !config.dev
         });
@@ -160,13 +160,13 @@ app.get(
   '/auth/google-oauth/callback',
   passport.authenticate('google-oauth', { session: false }),
   (req, res, next) => {
-    
+
     if (!req.user) {
       next(boom.unauthorized());
     }
     const { token, ...user } = req.user;
     console.log(`aqui viene la respuesta:  ${token}`);
-    res.cookie("token", token, {
+    res.cookie('token', token, {
       httpOnly: !config.dev,
       secure: !config.dev
     });
@@ -188,16 +188,26 @@ app.get(
     if (!req.user) {
       next(boom.unauthorized());
     }
-    
+
     const { token, ...user } = req.user;
-    console.log(`aqui viene el token:  ${token}`);
-    console.log(`aqui viene el user:  ${JSON.stringify(req.user)}`);
-    res.cookie("token", token, {
+    res.cookie('email', user.user.email, {
       httpOnly: !config.dev,
-      secure: !config.dev
+      secure: !config.dev,
+    });
+    res.cookie('id', user.user.id, {
+      httpOnly: !config.dev,
+      secure: !config.dev,
+    });
+    res.cookie('name', user.user.name, {
+      httpOnly: !config.dev,
+      secure: !config.dev,
     });
 
-    res.status(200).json(user);
+    res.cookie('token', token, {
+      httpOnly: !config.dev,
+      secure: !config.dev,
+    });
+    res.redirect('/');
   },
 );
 
@@ -211,11 +221,24 @@ app.get(
       next(boom.unauthorized());
     }
     const { token, ...user } = req.user;
-    res.cookie("token", token, {
+    res.cookie('email', user.user.email, {
       httpOnly: !config.dev,
-      secure: !config.dev
+      secure: !config.dev,
     });
-    res.status(200).json(user);
+    res.cookie('id', user.user.id, {
+      httpOnly: !config.dev,
+      secure: !config.dev,
+    });
+    res.cookie('name', user.user.name, {
+      httpOnly: !config.dev,
+      secure: !config.dev,
+    });
+
+    res.cookie('token', token, {
+      httpOnly: !config.dev,
+      secure: !config.dev,
+    });
+    res.redirect('/');
   },
 );
 
@@ -230,13 +253,25 @@ app.get(
     }
 
     const { token, ...user } = req.user;
-
-    res.cookie("token", token, {
+    res.cookie('email', user.user.email, {
       httpOnly: !config.dev,
-      secure: !config.dev
+      secure: !config.dev,
+    });
+    res.cookie('id', user.user.id, {
+      httpOnly: !config.dev,
+      secure: !config.dev,
+    });
+    res.cookie('name', user.user.name, {
+      httpOnly: !config.dev,
+      secure: !config.dev,
     });
 
-    res.status(200).json(user);
+    res.cookie('token', token, {
+      httpOnly: !config.dev,
+      secure: !config.dev,
+    });
+    res.redirect('/');
+
   },
 );
 
@@ -252,7 +287,7 @@ app.get(
 
     const { token, ...user } = req.user;
 
-    res.cookie("token", token, {
+    res.cookie('token', token, {
       httpOnly: !config.dev,
       secure: !config.dev
     });

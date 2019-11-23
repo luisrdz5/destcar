@@ -79,3 +79,12 @@ export const logoutUser = (payload) => {
     dispatch(logoutRequest(payload));
   };
 };
+export const loginUserFacebook = (redirectUrl) => {
+  window.location.href = '/auth/facebook';
+};
+export const loginUserTwitter = (redirectUrl) => {
+  window.location.href = '/auth/twitter';
+};
+export const loginUserGoogle = (redirectUrl) => {
+  window.location.href = '/auth/google';
+};

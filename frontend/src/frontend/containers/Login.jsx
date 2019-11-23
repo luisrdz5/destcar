@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import googleIcon from '../assets/images/google.png';
 import facebookIcon from '../assets/images/icons8-facebook-nuevo-48.png';
 import twitterIcon from '../assets/images/icons8-twitter-16.png';
-import { loginUser } from '../actions';
+import { loginUser, loginUserFacebook, loginUserTwitter, loginUserGoogle } from '../actions';
 import '../assets/styles/containers/Login.scss';
 
 const Login = (props) => {
@@ -21,6 +21,18 @@ const Login = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.loginUser(form, '/');
+  };
+  const handleFacebook = (event) => {
+    event.preventDefault();
+    props.loginUserFacebook('/');
+  };
+  const handleGoogle = (event) => {
+    event.preventDefault();
+    props.loginUserGoogle('/');
+  };
+  const handleTwitter = (event) => {
+    event.preventDefault();
+    props.loginUserTwitter('/');
   };
 
   return (
@@ -53,18 +65,15 @@ const Login = (props) => {
             </div>
           </form>
           <section className='login__container_social-media'>
-            <div>
+            <button className='login__container_social-media--Google-button' onClick={handleGoogle}>
               <img src={googleIcon} alt='Google' />
-              Inicia Sesión con Google
-            </div>
-            <div>
+            </button>
+            <button className='login__container_social-media--facebook-button' onClick={handleFacebook}>
               <img src={facebookIcon} alt='Facebook' />
-              Inicia Sesión con Facebook
-            </div>
-            <div>
+            </button>
+            <button className='login__container_social-media--Twitter-button' onClick={handleTwitter}>
               <img src={twitterIcon} alt='Twitter' />
-              Inicia Sesión con Twitter
-            </div>
+            </button>
           </section>
         </section>
         <p className='login__container--register'>
@@ -79,7 +88,9 @@ const Login = (props) => {
 };
 const mapDispatchToProps = {
   loginUser,
-
+  loginUserFacebook,
+  loginUserTwitter,
+  loginUserGoogle,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

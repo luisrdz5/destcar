@@ -15,6 +15,20 @@
     height: 45px;
     width: 90%;
 }
+.login__container_social-media--Google-button{
+  background-color: white !important;
+  font-size: 12px !important;
+  color: $text-color !important;
+  padding: 10px;
+}
+.login__container_social-media--Twitter-button{
+  background-color: $twitter !important;
+  font-size: 12px !important;
+}
+.login__container_social-media--facebook-button {
+  background-color: $facebook !important;
+  font-size: 12px !important;
+}
 
 .login button{
     background-color: $blue2;
