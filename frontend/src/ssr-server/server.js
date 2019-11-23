@@ -106,26 +106,24 @@ app.post('/auth/sign-up', async (req, res, next) => {
     next(error);
   }
 });
-
-app.get('/movies', async (req, res, next) => {});
-
-app.post('/user-movies', async (req, res, next) => {
+app.post('/getTrip', async (req, res, next) => {
   try {
-    const { body: userMovie } = req;
+    const { origin, destination } = req.body;
     const { token } = req.cookies;
-
     const { data, status } = await axios({
-      url: `${config.apiUrl}/api/user-movies`,
+      url: `${config.apiUrl}/api/trips/getTrip`,
       headers: { Authorization: `Bearer ${token}` },
-      method: 'post',
-      data: userMovie,
+      method: 'get',
+      data: {
+        origin,
+        destination
+      },
     });
 
-    if (status !== 201) {
+    if (status !== 200) {
       return next(boom.badImplementation());
     }
-
-    res.status(201).json(data);
+    res.status(200).json(data);
   } catch (error) {
     next(error);
   }

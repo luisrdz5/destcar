@@ -17,6 +17,7 @@ const tripsAPI = (app) => {
       passport.authenticate('jwt', { session: false }),
       scopesValidationHandler(['read:trips']),
       async function(req, res, next){
+        console.log(req.body);
         const { body: routes } = req;
         try {
           const route = await tripsService.getTrip(routes);

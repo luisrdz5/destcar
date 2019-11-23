@@ -30,6 +30,16 @@ const reducer = (state, action) => {
         ...state,
         route: action.payload,
       };
+    case 'SET_ROUTE':
+      return {
+        ...state,
+        from: action.payload.data.startLocation,
+        to: action.payload.data.endLocation,
+        route: action.payload.data.route,
+        money: action.payload.data.money,
+        time: action.payload.data.time,
+        distance: action.payload.data.distance,
+      };
     case 'SET_ERROR':
       return {
         ...state,

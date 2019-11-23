@@ -13,7 +13,7 @@ dotenv.config();
 const isProd = (process.env.NODE_ENV === 'production');
 
 module.exports = {
-  devtool: isProd ? 'hidden-source-map' : 'cheap-source-map', 
+  devtool: isProd ? 'hidden-source-map' : 'cheap-source-map',
   entry: './src/frontend/index.js',
   mode: process.env.NODE_ENV,
   output: {

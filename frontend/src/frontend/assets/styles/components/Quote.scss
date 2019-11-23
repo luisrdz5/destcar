@@ -20,7 +20,7 @@
 .main__container__column--route{
     display: flex;
     flex-direction: column;
-    height: 372px;
+    height: 272px;
 }
 .main__container__column--route input{
   margin: 20px 10px 10px 10px;
@@ -53,7 +53,7 @@
     border-right: 0px;
 }
 .main__container__column--price {
-    display: none;
+    display: flex;
     width: 60%;
     height: 150px;
     background-color: rgba(42, 42, 49, 0.959);

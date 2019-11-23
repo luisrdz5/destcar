@@ -45,10 +45,19 @@ class mapsAPI  {
             info = info.data
             let distance;
             let time;
+            let route = [];
+            let endLocation= {};
+            let startLocation={};
+            
             info.routes.map((payload) => {
                 payload.legs.map((item) => {
                     distance=parseFloat(item.distance.value);
                     time=parseFloat(item.duration.value);
+                    endLocation= item.end_location;
+                    startLocation = item.start_location;
+                    item.steps.map((step) =>{
+                        route=[...route, step.end_location , step.start_location ];
+                    });
                 })
             });
             //calculating the rate 
@@ -56,7 +65,7 @@ class mapsAPI  {
             if(total<minPayment){
                 total=minPayment
             }
-            return total;
+            return {money: total , time, distance, endLocation, startLocation , route };
 
         }catch(err){
             console.log(err);
