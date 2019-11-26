@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-constructor */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Map, Polyline, Marker, GoogleApiWrapper } from 'google-maps-react';
@@ -12,6 +13,10 @@ const style = {
 };
 
 class MapContainer extends Component {
+  constructor(props, context) {
+    super(props, context);
+  }
+
   render() {
     return (
       <div className='main__container__map'>
@@ -47,6 +52,7 @@ class MapContainer extends Component {
             />
           )}
           <Polyline
+            visible={this.props.routeVisible}
             options={{
               path: this.props.route,
               strokeColor: '#ffffff',
@@ -77,6 +83,7 @@ const mapStateToProps = (state) => {
     from: state.from,
     to: state.to,
     route: state.route,
+    routeVisible: state.routeVisible,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({

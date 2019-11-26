@@ -2,9 +2,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+//import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
+import Geocode from 'react-geocode';
+import Autocomplete from 'react-google-autocomplete';
 import { getQuote } from '../actions';
 import '../assets/styles/components/Quote.scss';
 import carIcon from '../assets/images/car.png';
+
+Geocode.setApiKey('AIzaSyA6goRNCL-UFkReqn_Ll9_lgpZtq5D9Rdw');
+Geocode.enableDebug();
 
 const Quote = (props) => {
 
@@ -26,17 +32,23 @@ const Quote = (props) => {
     <div className='main__container__column'>
       <form onSubmit={handleQuote}>
         <div className='main__container__column--route'>
-          <input
+          <Autocomplete
             name='origin'
-            type='input'
-            className='main__container__column--route--from'
+            onPlaceSelected={(place) => {
+              console.log(place);
+            }}
+            types={['geocode']}
+            componentRestrictions={{ country: 'mx' }}
             placeholder='Donde quieres iniciar ...'
             onChange={handleInput}
           />
-          <input
+          <Autocomplete
             name='destination'
-            type='input'
-            className='main__container__column--route--to'
+            onPlaceSelected={(place) => {
+              console.log(place);
+            }}
+            types={['geocode']}
+            componentRestrictions={{ country: 'mx' }}
             placeholder='A donde quieres ir ...'
             onChange={handleInput}
           />

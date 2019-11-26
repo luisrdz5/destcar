@@ -8,6 +8,8 @@ const render = (html, preloadedState) => {
         <html lang="es">
             <head>
                 <title>DestCar</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6goRNCL-UFkReqn_Ll9_lgpZtq5D9Rdw&libraries=places&language=es"></script>
                 <link rel="stylesheet" href="${files ? files['main.css'] : 'assets/app.css'}" type="text/css"></link>
             </head>
             <body>
