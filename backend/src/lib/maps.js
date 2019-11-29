@@ -65,6 +65,8 @@ class mapsAPI  {
             if(total<minPayment){
                 total=minPayment
             }
+            total= parseFloat(total).toFixed(2);
+            console.log(`(maps.js) total es: ${total}`);
             return {money: total , time, distance, endLocation, startLocation , route };
 
         }catch(err){
