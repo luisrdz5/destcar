@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
@@ -17,40 +18,69 @@ const Quote = (props) => {
   const [form, setValues] = useState({
   });
   const handleInput = (event) => {
+    console.log(`(Quote.jsx) event es: ${event}`);
+    event.target.autocomplete = 'off';
     setValues({
       ...form,
       [event.target.name]: event.target.value,
     });
   };
+  /*
+  const handleUpdate = (payload) => {
+    setValues({
+      ...form,
+      origin: payload.origin.value,
+      destination: payload.destination.value,
+    });
+  };
+  */
+  const handleOrigin = (payload) => {
+    setValues({
+      ...form,
+      origin: payload,
+    });
+  };
+  const handleDestination = (payload) => {
+    setValues({
+      ...form,
+      destination: payload,
+    });
+  };
 
   const handleQuote = (event) => {
     event.preventDefault();
+    console.log(form);
+    //handleUpdate(form);
     props.getQuote(form);
   };
 
   return (
     <div className='main__container__column'>
-      <form onSubmit={handleQuote}>
+      <form onSubmit={handleQuote} >
         <div className='main__container__column--route'>
           <Autocomplete
             name='origin'
             onPlaceSelected={(place) => {
-              console.log(place);
+              console.log(place.formatted_address);
+              handleOrigin(place.formatted_address);
             }}
             types={['geocode']}
             componentRestrictions={{ country: 'mx' }}
             placeholder='Donde quieres iniciar ...'
             onChange={handleInput}
+            autoComplete='off'
           />
           <Autocomplete
             name='destination'
             onPlaceSelected={(place) => {
-              console.log(place);
+              console.log(place.formatted_address);
+              handleDestination(place.formatted_address);
             }}
             types={['geocode']}
             componentRestrictions={{ country: 'mx' }}
             placeholder='A donde quieres ir ...'
             onChange={handleInput}
+            autoComplete='off'
           />
         </div>
         <div className='main__container__column--price'>
