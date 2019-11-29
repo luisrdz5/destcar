@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Map, Polyline, Marker, GoogleApiWrapper } from 'google-maps-react';
+//import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import { setDestiny, setOrigin } from '../actions';
 import { mapStyles } from '../assets/styles/MapStyles';
 import '../assets/styles/components/MapContainer.scss';
