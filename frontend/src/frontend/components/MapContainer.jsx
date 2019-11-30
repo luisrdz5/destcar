@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Map, Polyline, Marker, GoogleApiWrapper } from 'google-maps-react';
 //import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
-import { setDestiny, setOrigin } from '../actions';
+import { setDestiny, setOrigin, setRoute } from '../actions';
 import { mapStyles } from '../assets/styles/MapStyles';
 import '../assets/styles/components/MapContainer.scss';
 import pinIcon from '../assets/images/pin.png';
@@ -16,17 +16,37 @@ const style = {
 class MapContainer extends Component {
   constructor(props, context) {
     super(props, context);
+    this.route = {};
+  }
+
+  calculateDistance = (destination) => {
+    const { google } = this.props;
+    console.error(`calculando ruta  ${this.route}`);
+    const DirectionsService = new google.maps.DirectionsService();
+    DirectionsService.route({
+      origin: new google.maps.LatLng(this.props.from.lat, this.props.from.lng),
+      destination: new google.maps.LatLng(destination.lat, destination.lng),
+      travelMode: google.maps.TravelMode.DRIVING,
+    }, (result, status) => {
+      if (status === google.maps.DirectionsStatus.OK) {
+        this.route = result.routes[0].overview_path.map((p) => { return { lat: p.lat(), lng: p.lng() }; });
+      } else {
+        console.error(`error fetching directions ${result}`);
+        console.log(result);
+      }
+    });
   }
 
   render() {
     return (
       <div className='main__container__map'>
         <Map
-          google={this.props.google}
+          google={window.google}
           zoom={this.props.zoom}
           initialCenter={this.props.defaultLocation}
           style={style}
           styles={mapStyles}
+          onReady={() => this.calculateDistance(this.props.to)}
         >
           {this.props.from && (
             <Marker
@@ -55,7 +75,7 @@ class MapContainer extends Component {
           <Polyline
             visible={this.props.routeVisible}
             options={{
-              path: this.props.route,
+              path: this.route,
               strokeColor: '#ffffff',
               strokeOpacity: 1,
               strokeWeight: 3,
@@ -65,7 +85,6 @@ class MapContainer extends Component {
               }],
             }}
           />
-
         </Map>
       </div>
     );
@@ -75,6 +94,7 @@ class MapContainer extends Component {
 const mapDispatchToProps = {
   setDestiny,
   setOrigin,
+  setRoute,
 };
 const mapStateToProps = (state) => {
   return {
@@ -85,6 +105,7 @@ const mapStateToProps = (state) => {
     to: state.to,
     route: state.route,
     routeVisible: state.routeVisible,
+    google: state.google,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({

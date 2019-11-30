@@ -39,11 +39,12 @@ const reducer = (state, action) => {
         time: parseFloat(action.payload.data.time / 60).toFixed(2),
         distance: parseFloat(action.payload.data.distance / 1000).toFixed(2),
         routeVisible: true,
-        route: [
+        /*route: [
           { lat: 19.42672619, lng: -99.1718706 },
           { lat: 19.4428928, lng: -99.1718706 },
         ],
-        //route: action.payload.data.route,
+        */
+        route: action.payload.data.route,
       };
     case 'SET_ERROR':
       return {
