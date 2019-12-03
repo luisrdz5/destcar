@@ -2,21 +2,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Map, Polyline, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, Polyline, Marker } from 'google-maps-react';
 //import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import { setDestiny, setOrigin, setRoute } from '../actions';
 import { mapStyles } from '../assets/styles/MapStyles';
 
 import '../assets/styles/components/MapContainer.scss';
 //import pinIcon from '../assets/images/pin.png';
-import MyMapComponent from './Map';
-
 
 const style = {
   height: '600px',
   width: '50%',
 };
-
 
 class MapContainer extends Component {
   constructor(props, context) {
@@ -91,7 +88,6 @@ class MapContainer extends Component {
             }}
           />
         </Map>
-
 
       </div>
     );
