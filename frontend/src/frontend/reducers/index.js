@@ -30,6 +30,12 @@ const reducer = (state, action) => {
         ...state,
         route: action.payload,
       };
+    case 'DELETE_ROUTE':
+      return {
+        ...state,
+        route: [],
+        routeVisible: false,
+      };
     case 'SET_ROUTE':
       return {
         ...state,

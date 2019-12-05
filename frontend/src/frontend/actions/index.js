@@ -31,6 +31,10 @@ export const setRoute = (payload) => ({
   type: 'SET_ROUTE',
   payload,
 });
+export const deleteRoute = (payload) => ({
+  type: 'DELETE_ROUTE',
+  payload,
+});
 
 export const setError = (payload) => ({
   type: 'SET_ERROR',
@@ -100,6 +104,7 @@ export const getQuote = (payload) => {
   return (dispatch) => {
     axios.post('/getTrip', payload)
       .then(({ data }) => {
+        dispatch(deleteRoute(payload));
         dispatch(setRoute(data));
       })
       .catch((err) => dispatch(setError(err)));

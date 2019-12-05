@@ -2,13 +2,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Map, Polyline, Marker } from 'google-maps-react';
+import { Map, Polyline, Marker, GoogleApiWrapper } from 'google-maps-react';
 //import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import { setDestiny, setOrigin, setRoute } from '../actions';
 import { mapStyles } from '../assets/styles/MapStyles';
 
 import '../assets/styles/components/MapContainer.scss';
-//import pinIcon from '../assets/images/pin.png';
+import pinIcon from '../assets/images/pin.png';
 
 const style = {
   height: '600px',
@@ -40,6 +40,7 @@ class MapContainer extends Component {
   }
 
   render() {
+    console.log(this.props.route);
     return (
       <div className='main__container__map'>
         <Map
@@ -74,19 +75,20 @@ class MapContainer extends Component {
               }}
             />
           )}
-          <Polyline
-            visible={this.props.routeVisible}
-            options={{
-              path: this.route,
-              strokeColor: '#ffffff',
-              strokeOpacity: 1,
-              strokeWeight: 3,
-              icons: [{
-                offset: '0',
-                repeat: '10px',
-              }],
-            }}
-          />
+          {this.props.routeVisible && (
+            <Polyline
+              options={{
+                path: this.props.route,
+                strokeColor: '#ffffff',
+                strokeOpacity: 1,
+                strokeWeight: 3,
+                icons: [{
+                  offset: '0',
+                  repeat: '10px',
+                }],
+              }}
+            />
+          )}
         </Map>
 
       </div>
@@ -111,5 +113,7 @@ const mapStateToProps = (state) => {
     google: state.google,
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({
+  apiKey: 'AIzaSyA6goRNCL-UFkReqn_Ll9_lgpZtq5D9Rdw',
+})(MapContainer));
 
