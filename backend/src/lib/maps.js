@@ -66,7 +66,7 @@ class mapsAPI  {
                         route=[...route , step.end_location ];
                         stringRoute = stringRoute + `${step.end_location.lat},${step.end_location.lng}|`;
                     });
-                    returnRoute = this.getRoute(stringRoute.slice(0, -1));
+                    returnRoute =  this.getRoute(stringRoute.slice(0, -1));
                     console.log(returnRoute);
                 })
                 // obtengo bounds
