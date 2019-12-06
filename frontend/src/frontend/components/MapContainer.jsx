@@ -31,7 +31,7 @@ class MapContainer extends Component {
       travelMode: google.maps.TravelMode.DRIVING,
     }, (result, status) => {
       if (status === google.maps.DirectionsStatus.OK) {
-        this.route = result.routes[0].overview_path.map((p) => { return { lat: p.lat(), lng: p.lng() }; });
+        this.props.route = result.routes[0].overview_path.map((p) => { return { lat: p.lat(), lng: p.lng() }; });
       } else {
         console.error(`error fetching directions ${result}`);
         console.log(result);
@@ -40,7 +40,6 @@ class MapContainer extends Component {
   }
 
   render() {
-    console.log(this.props.route);
     return (
       <div className='main__container__map'>
         <Map
