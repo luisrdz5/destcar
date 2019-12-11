@@ -1,3 +1,4 @@
+/* eslint-disable require-atomic-updates */
 const { config } = require('../config');
 const axios= require('axios');
 const MongoLib = require('../lib/mongo');
@@ -11,6 +12,7 @@ class mapsAPI  {
     constructor() {
         this.MapsURI= `https://maps.googleapis.com/maps/api/directions/json?`;
         this.roadsURI='https://roads.googleapis.com/v1/snapToRoads?path='
+        //this.roadsURI='https://roads.googleapis.com/v1/nearestRoads?points='
         this.interpolate='&interpolate=true';
         this.origin = `origin=`;
         this.destination = `&destination=`;
@@ -53,7 +55,8 @@ class mapsAPI  {
             let startLocation={};
             let stringRoute='';
             let bounds=[];
-            let returnRoute = [];
+            let polylines=[];
+            //let returnRoute = [];
             info.routes.map((payload) => {
                 payload.legs.map((item) => {
                     distance=parseFloat(item.distance.value);
@@ -64,13 +67,12 @@ class mapsAPI  {
                     stringRoute = stringRoute + `${item.start_location.lat},${item.start_location.lng}|`
                     item.steps.map((step) =>{
                         route=[...route , step.end_location ];
-                        stringRoute = stringRoute + `${step.end_location.lat},${step.end_location.lng}|`;
+                        polylines=[...polylines, step.polyline]
+                        stringRoute = stringRoute + `${step.start_location.lat},${step.start_location.lng}|${step.end_location.lat},${step.end_location.lng}|`;
                     });
-                    returnRoute =  this.getRoute(stringRoute.slice(0, -1));
-                    console.log(returnRoute);
                 })
                 // obtengo bounds
-                bounds= payload.bounds;
+                bounds= [payload.bounds.northeast, payload.bounds.southwest];
             });
             //calculating the rate 
             let total = baseRate + ((distance / 1000) * costByKM)+((time / 60) * costByMinute); 
@@ -78,7 +80,17 @@ class mapsAPI  {
                 total=minPayment
             }
             total= parseFloat(total).toFixed(2);
-            return {money: total , time, distance, endLocation, startLocation , route, bounds, returnRoute };
+            let returnRoute = await this.getRoute(stringRoute.slice(0, -1));
+            console.log(JSON.stringify(returnRoute.warningMessage));
+            returnRoute = returnRoute.snappedPoints;
+            let detailedRoute = [] ;
+            returnRoute.map(item => {
+                detailedRoute=[...detailedRoute , {"lat":item.location.latitude, "lng":item.location.longitude}];
+            });
+            console.log(`(maps.js) bounds : ${JSON.stringify(bounds)}`);
+            console.log(`(maps.js) polylines : ${JSON.stringify(polylines)}`);
+            route=detailedRoute;
+            return {money: total , time, distance, endLocation, startLocation , route, bounds, detailedRoute, polylines };
 
         }catch(err){
             console.log(err);
@@ -87,6 +99,7 @@ class mapsAPI  {
     async getRoute(stringRoute){
         //console.log(`(maps.js) stringRoute es: ${stringRoute}`);
         let URI = this.roadsURI+stringRoute+this.interpolate+this.key;
+        //let URI = this.roadsURI+stringRoute+this.key;
         let route= [];
         try{
             let info = await axios({
@@ -98,8 +111,8 @@ class mapsAPI  {
             info.snappedPoints.map((step) =>{
                 route=[...route , step.location];
             });
-            console.log(`(maps.js) info es: ${JSON.stringify(route)}`);
-            return JSON.stringify(info);
+            //console.log(`(maps.js) info es: ${JSON.stringify(info)}`);
+            return info;
         }catch(err){
             console.log(err);
         }

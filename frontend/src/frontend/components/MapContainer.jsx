@@ -110,6 +110,8 @@ const mapStateToProps = (state) => {
     route: state.route,
     routeVisible: state.routeVisible,
     google: state.google,
+    bounds: state.bounds,
+    polylines: state.polylines,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({

@@ -51,6 +51,8 @@ const reducer = (state, action) => {
         ],
         */
         route: action.payload.data.route,
+        polylines: action.payload.data.polylines,
+        bounds: action.payload.data.bounds,
       };
     case 'SET_ERROR':
       return {
