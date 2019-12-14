@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -17,22 +18,18 @@ const Quote = (props) => {
   const [form, setValues] = useState({
   });
   const handleInput = (event) => {
-    console.log(`(Quote.jsx) event es: ${event}`);
+    //console.log(`(Quote.jsx) event es: ${event}`);
     event.target.autocomplete = 'off';
     setValues({
       ...form,
       [event.target.name]: event.target.value,
     });
   };
-  /*
-  const handleUpdate = (payload) => {
-    setValues({
-      ...form,
-      origin: payload.origin.value,
-      destination: payload.destination.value,
-    });
+  const handleModal = () => {
+    const modal = document.querySelector('.main__container__column--order-modal');
+    //console.log(`(quote.jsx) handleModal ${JSON.stringify(modal)}`);
+    modal.classList.toggle('show-modal');
   };
-  */
   const handleOrigin = (payload) => {
     setValues({
       ...form,
@@ -107,7 +104,18 @@ const Quote = (props) => {
         </div>
 
         <div className='main__container__column--order'>
-          <input className='main__container__column--order--confirm' type='submit' value='Cotizar' />
+          {!props.routeVisible && (
+            <input className='main__container__column--order--confirm' id='cotizar' type='submit' value='Cotizar' />
+          )}
+          {props.routeVisible && (
+            <input className='main__container__column--order--confirm' id='solicitar' type='button' value='Solicitar Conductor' onClick={handleModal} />
+          )}
+        </div>
+        <div className='main__container__column--order-modal'>
+          <div className='main__container__column--order-modal-content'>
+            <span className='main__container__column--order-close-button' onClick={handleModal} >&times;</span>
+            <h1>Lo Sentimos no tenemos conductores disponibles en tu zona</h1>
+          </div>
         </div>
       </form>
     </div>
@@ -121,6 +129,7 @@ const mapStateToProps = (state) => {
     money: state.money,
     time: state.time,
     distance: state.distance,
+    routeVisible: state.routeVisible,
   };
 };
 

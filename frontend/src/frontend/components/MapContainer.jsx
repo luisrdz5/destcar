@@ -40,6 +40,10 @@ class MapContainer extends Component {
   }
 
   render() {
+    const boundsMap = new this.props.google.maps.LatLngBounds();
+    for (let i = 0; i < this.props.route.length; i++) {
+      boundsMap.extend(this.props.route[i]);
+    }
     return (
       <div className='main__container__map'>
         <Map
@@ -48,6 +52,7 @@ class MapContainer extends Component {
           initialCenter={this.props.defaultLocation}
           style={style}
           styles={mapStyles}
+          bounds={boundsMap}
           onReady={() => this.calculateDistance(this.props.to)}
         >
           {this.props.from && (

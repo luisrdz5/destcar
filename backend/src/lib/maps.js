@@ -54,7 +54,6 @@ class mapsAPI  {
             let endLocation= {};
             let startLocation={};
             let stringRoute='';
-            let bounds=[];
             let polylines=[];
             //let returnRoute = [];
             info.routes.map((payload) => {
@@ -72,7 +71,6 @@ class mapsAPI  {
                     });
                 })
                 // obtengo bounds
-                bounds= [payload.bounds.northeast, payload.bounds.southwest];
             });
             //calculating the rate 
             let total = baseRate + ((distance / 1000) * costByKM)+((time / 60) * costByMinute); 
@@ -87,10 +85,9 @@ class mapsAPI  {
             returnRoute.map(item => {
                 detailedRoute=[...detailedRoute , {"lat":item.location.latitude, "lng":item.location.longitude}];
             });
-            console.log(`(maps.js) bounds : ${JSON.stringify(bounds)}`);
-            console.log(`(maps.js) polylines : ${JSON.stringify(polylines)}`);
-            route=detailedRoute;
-            return {money: total , time, distance, endLocation, startLocation , route, bounds, detailedRoute, polylines };
+            //console.log(`(maps.js) polylines : ${JSON.stringify(polylines)}`);
+            //route=detailedRoute;
+            return {money: total , time, distance, endLocation, startLocation , route, detailedRoute, polylines };
 
         }catch(err){
             console.log(err);
