@@ -9,6 +9,7 @@ import Autocomplete from 'react-google-autocomplete';
 import { getQuote } from '../actions';
 import '../assets/styles/components/Quote.scss';
 import carIcon from '../assets/images/car.png';
+import logoVertical from '../assets/images/logo-vertical.png';
 
 Geocode.setApiKey('AIzaSyA6goRNCL-UFkReqn_Ll9_lgpZtq5D9Rdw');
 Geocode.enableDebug();
@@ -114,7 +115,10 @@ const Quote = (props) => {
         <div className='main__container__column--order-modal'>
           <div className='main__container__column--order-modal-content'>
             <span className='main__container__column--order-close-button' onClick={handleModal} >&times;</span>
-            <h1>Lo Sentimos no tenemos conductores disponibles en tu zona</h1>
+            <div className='main__container__column--order-modal-content__principal'>
+              <img className='main__container__column--order-modal__img' src={logoVertical} alt='logo' />
+              Lo Sentimos no tenemos conductores disponibles en tu zona
+            </div>
           </div>
         </div>
       </form>

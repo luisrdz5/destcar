@@ -109,7 +109,22 @@
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
     z-index:1;
 }
-
+.main__container__column--order-modal-content {
+    text-align: center;
+    align-content: center;
+}
+.main__container__column--order-modal__img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 200px;
+}
+.main__container__column--order-modal-content__principal{
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+}
 
 @media only screen and (max-width: $max-width){
     .main__container__column{
