@@ -110,3 +110,7 @@ export const getQuote = (payload) => {
       .catch((err) => dispatch(setError(err)));
   };
 };
+export const changeInput = (payload) => ({
+  type: 'CHANGE_INPUT',
+  payload,
+});

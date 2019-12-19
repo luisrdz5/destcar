@@ -60,6 +60,7 @@ const main = async (req, res, next) => {
           { lat: 19.4428928, lng: -99.1718706 },
         ],
         routeVisible: false,
+        changedInput: false,
       };
 
     } catch (err) {

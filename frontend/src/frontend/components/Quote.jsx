@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Geocode from 'react-geocode';
 import Autocomplete from 'react-google-autocomplete';
-import { getQuote } from '../actions';
+import { getQuote, changeInput } from '../actions';
 import '../assets/styles/components/Quote.scss';
 import carIcon from '../assets/images/car.png';
 import logoVertical from '../assets/images/logo-vertical.png';
@@ -25,6 +25,7 @@ const Quote = (props) => {
       ...form,
       [event.target.name]: event.target.value,
     });
+    props.changeInput();
   };
   const handleModal = () => {
     const modal = document.querySelector('.main__container__column--order-modal');
@@ -105,10 +106,10 @@ const Quote = (props) => {
         </div>
 
         <div className='main__container__column--order'>
-          {!props.routeVisible && (
+          {!props.changedInput && (
             <input className='main__container__column--order--confirm' id='cotizar' type='submit' value='Cotizar' />
           )}
-          {props.routeVisible && (
+          {props.changedInput && (
             <input className='main__container__column--order--confirm' id='solicitar' type='button' value='Solicitar Conductor' onClick={handleModal} />
           )}
         </div>
@@ -127,6 +128,7 @@ const Quote = (props) => {
 };
 const mapDispatchToProps = {
   getQuote,
+  changeInput,
 };
 const mapStateToProps = (state) => {
   return {
@@ -134,6 +136,7 @@ const mapStateToProps = (state) => {
     time: state.time,
     distance: state.distance,
     routeVisible: state.routeVisible,
+    changedInput: state.changedInput,
   };
 };
 

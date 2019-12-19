@@ -1,5 +1,10 @@
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'CHANGE_INPUT':
+      return {
+        ...state,
+        changedInput: false,
+      };
     case 'SET_DESTINY':
       return {
         ...state,
@@ -35,6 +40,7 @@ const reducer = (state, action) => {
         ...state,
         route: [],
         routeVisible: false,
+        changedInput: false,
       };
     case 'SET_ROUTE':
       return {
@@ -45,6 +51,7 @@ const reducer = (state, action) => {
         time: parseFloat(action.payload.data.time / 60).toFixed(2),
         distance: parseFloat(action.payload.data.distance / 1000).toFixed(2),
         routeVisible: true,
+        changedInput: true,
         /*route: [
           { lat: 19.42672619, lng: -99.1718706 },
           { lat: 19.4428928, lng: -99.1718706 },
