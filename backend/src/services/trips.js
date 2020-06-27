@@ -10,9 +10,6 @@ class TripService {
   async getTrip(route) {
     const maps = new mapsAPI();
     const data = maps.getAmount({route});
-    //const filledRoute = maps.getRoute(data.data.route)
-    console.log(`(trips.js) data es: ${JSON.stringify(data)}`);
-    //console.log(`(trips.js) stringRoute es: ${filledRoute}`);
     return data || {};
   }
   async createTrip({ route }) {

@@ -28,7 +28,7 @@ class mapsAPI  {
         let minPayment; 
         let baseRate;
         try{
-            const query = country && { country };
+            const query =  country && { country };
             const quotes = await this.mongoDB.getAll('quotes',query);
             quotes.map((item) => {
                 costByKM=parseFloat(item.costByKM);
@@ -39,6 +39,7 @@ class mapsAPI  {
         }catch(err){
             console.log(err);
         }
+        
         try{
             //console.log(origin.replace(/\s/g,"+"));
             let URI = this.MapsURI+this.origin+encodeURIComponent(origin.replace(/\s/g,"+"))+this.destination+encodeURIComponent(destination.replace(/\s/g,"+"))+this.mode+this.key;
@@ -73,6 +74,7 @@ class mapsAPI  {
                 // obtengo bounds
             });
             //calculating the rate 
+            console.log(`Maps.js baserate: ${baseRate} distance:${distance} time:${time}`);
             let total = baseRate + ((distance / 1000) * costByKM)+((time / 60) * costByMinute); 
             if(total<minPayment){
                 total=minPayment

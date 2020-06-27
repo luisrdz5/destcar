@@ -17,9 +17,10 @@ const tripsAPI = (app) => {
       passport.authenticate('jwt', { session: false }),
       scopesValidationHandler(['read:trips']),
       async function(req, res, next){
-        console.log(req.body);
+        //console.log(`tripsAPI.js req.body: ${JSON.stringify(req.body)}`);
         const { body: routes } = req;
         try {
+          //console.log(`tripsAPI.js routes:  ${JSON.stringify(routes)}`);
           const route = await tripsService.getTrip(routes);
           res.status(200).json({
             data: route,
