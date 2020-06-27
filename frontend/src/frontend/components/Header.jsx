@@ -30,7 +30,7 @@ const Header = (props) => {
                 (<img className='header__burguer__menu--profile--photo--img' src={gravatar(user.email)} alt={user.email} />) :
                 (<img className='header__burguer__menu--profile--photo--img' src={perfilIcon} alt='User' />)}
               <div className='header__burguer__menu--profile--photo--rating'>
-  4.2
+                4.2
                 {' '}
                 <img className='header__burguer__menu--profile--photo--star' src={starIcon} alt='rating' />
               </div>

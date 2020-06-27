@@ -85,23 +85,23 @@ const Quote = (props) => {
           <img src={carIcon} alt='car' />
           <label className='main__container__column--price--title'> Tarifa Estimada </label>
           <label>
-         Precio $
+            Precio $
             {' '}
             {props.money}
           </label>
           <label>
-         Tiempo
+            Tiempo
             {' '}
             {props.time}
             {' '}
-         mins.
+            mins.
           </label>
           <label>
-         Distancia:
+            Distancia:
             {' '}
             {props.distance}
             {' '}
-         kms.
+            kms.
           </label>
         </div>
 

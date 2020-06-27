@@ -17,7 +17,7 @@ module.exports = {
   entry: './src/frontend/index.js',
   mode: process.env.NODE_ENV,
   output: {
-    path: isProd ? path.join(process.cwd(), './src/server/public') : '/',
+    path: path.join(__dirname, './src/ssr-server/public'),
     filename: isProd ? 'assets/app-[hash].js' : 'assets/app.js',
     publicPath: '/',
   },
